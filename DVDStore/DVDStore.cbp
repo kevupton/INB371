@@ -32,6 +32,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="App.h" />
+		<Unit filename="Customer.h" />
+		<Unit filename="CustomerCollection.h" />
+		<Unit filename="Movie.h" />
+		<Unit filename="MovieCollection.h" />
+		<Unit filename="Setup.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
