@@ -1,9 +1,11 @@
 #ifndef _customer_h
 #define _customer_h
 #include <string>
+#include <vector>
 
 using namespace std;
 
+class Movie;
 class Customer {
 public:
     ///Constructs the customer class
@@ -20,6 +22,9 @@ public:
 
     ///Gets the customers userid, used to login
     string getUserID();
+
+    ///Gets the rented movies for the specific customer
+    vector<Movie*> getRentedMovies();
 private:
     string first_name;
     string last_name;

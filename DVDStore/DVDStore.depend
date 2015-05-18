@@ -7,31 +7,30 @@
 	"app.h"
 	<iostream>
 
-1431979558 e:\uni\inb371\inb371\dvdstore\app.h
+1431984230 e:\uni\inb371\inb371\dvdstore\app.h
 	"customer.h"
 	"customercollection.h"
 	"movie.h"
 	"moviecollection.h"
+	"rentedcollection.h"
 	<vector>
 	<map>
 
-1431979674 e:\uni\inb371\inb371\dvdstore\customer.h
+1431984380 e:\uni\inb371\inb371\dvdstore\customer.h
 	<string>
-
-1431979606 e:\uni\inb371\inb371\dvdstore\customercollection.h
-	<string>
-	"customer.h"
 	<vector>
 
-1431976697 e:\uni\inb371\inb371\dvdstore\movie.h
+1431984317 e:\uni\inb371\inb371\dvdstore\customercollection.h
 	<string>
-	"customer.h"
-	"movie.h"
+	<vector>
 
-1431977324 e:\uni\inb371\inb371\dvdstore\moviecollection.h
-	"movie.h"
+1431984335 e:\uni\inb371\inb371\dvdstore\movie.h
+	<string>
+
+1431984402 e:\uni\inb371\inb371\dvdstore\moviecollection.h
 	<map>
 	<set>
+	<string>
 
 1431982007 source:e:\uni\inb371\inb371\dvdstore\controller.cpp
 	"controller.h"
@@ -39,16 +38,16 @@
 1431981892 e:\uni\inb371\inb371\dvdstore\controller.h
 	"app.h"
 
-1431979651 source:e:\uni\inb371\inb371\dvdstore\customer.cpp
+1431983936 source:e:\uni\inb371\inb371\dvdstore\customer.cpp
 	"customer.h"
 
-1431981782 source:e:\uni\inb371\inb371\dvdstore\customercollection.cpp
+1431983137 source:e:\uni\inb371\inb371\dvdstore\customercollection.cpp
 	"customercollection.h"
 	<vector>
 	<algorithm>
 	"customer.h"
 
-1431975045 source:e:\uni\inb371\inb371\dvdstore\movie.cpp
+1431984162 source:e:\uni\inb371\inb371\dvdstore\movie.cpp
 	"movie.h"
 
 1431975213 source:e:\uni\inb371\inb371\dvdstore\rentedcollection.cpp
@@ -56,7 +55,7 @@
 
 1431973413 e:\uni\inb371\inb371\dvdstore\rentedcollection.h
 
-1431977426 source:e:\uni\inb371\inb371\dvdstore\moviecollection.cpp
+1431983921 source:e:\uni\inb371\inb371\dvdstore\moviecollection.cpp
 	"moviecollection.h"
 	<map>
 

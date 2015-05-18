@@ -1,9 +1,46 @@
 #include "moviecollection.h"
+#include "movie.h"
 #include <map>
 
-///Gets the movie by the ID of the movie
+/**
+* Attempts to get the movie with the input id
+*
+* int id the id of the movie to retrieve
+* throws exception if the id is not found
+*/
 Movie &MovieCollection::get(int id) {
     map<int,Movie*>::iterator it;
     it = collection.find(id);
-    return *(*it).second;
+    if (it != collection.end()) { ///if the value is found
+        return *(*it).second;
+    }
+    throw exception(); ///value not found
+}
+
+
+/**
+* Adds a movie to the collection
+*
+* Movie m the movie instance to add to the collection
+*/
+void MovieCollection::addMovie(Movie &m) {
+    m.setID(active_id);
+    collection.insert( std::pair<int, Movie*> (active_id, &m));
+    active_id++; ///increment the id value
+}
+
+
+/**
+* Attempts to remove the movie from the collection
+*
+* Movie m the movie instance to add to the collection
+* throws exception if the movie does not exist
+*/
+void MovieCollection::removeMovie(Movie &m)  {
+    map<int,Movie*>::iterator it;
+    it = collection.find(m.getID());
+    if (it != collection.end()) { ///if the value is found
+        collection.erase(it);
+    }
+    throw exception(); ///value not found
 }

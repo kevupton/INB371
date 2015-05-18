@@ -4,6 +4,7 @@
 #include "customercollection.h"
 #include "movie.h"
 #include "moviecollection.h"
+#include "rentedcollection.h"
 #include <vector>
 #include <map>
 

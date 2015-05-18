@@ -1,11 +1,11 @@
 #ifndef _customercollection_h
 #define _customercollection_h
 #include <string>
-#include "customer.h"
 #include <vector>
 
 using namespace std;
 
+class Customer;
 class CustomerCollection {
 public:
     ///Get customer by name or login

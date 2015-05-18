@@ -1,11 +1,10 @@
 #ifndef _movie_h
 #define _movie_h
 #include <string>
-#include "customer.h"
-#include "movie.h"
 
 using namespace std;
 
+class Customer;
 class Movie {
 public:
     ///list of all the genres a movie could have

@@ -1,16 +1,12 @@
 #ifndef _moviecollection_h
 #define _moviecollection_h
-#include "movie.h"
 #include <map>
 #include <set>
+#include <string>
 
 using namespace std;
-/*
-struct MovieSorting {
-    bool operator() (Movie& lhs, Movie& rhs) const{
-        return lhs.getID() < rhs.getID();
-    }
-};*/
+
+class Movie;
 class MovieCollection {
 public:
     ///Converts the collection into a map containing <title, count>
