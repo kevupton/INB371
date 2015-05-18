@@ -14,9 +14,6 @@ The main application class used to interact with the sub application classes
 */
 class App {
 public:
-    ///Constructor, calls the initialise method
-    App();
-
     ///Setup method to initialise all the default values in memory
     void initialise();
 
@@ -38,23 +35,21 @@ public:
     ///Gets the Customer from the registered customer collection based on
     ///Either name or id
     Customer &getCustomer(string);
-    Customer &getCustomer(int);
+    Customer &getCustomerByLogin(string);
 
     ///Gets the Movie from the register movie collection based on id or name
-    Movie &getMovie(id);
-    Movie &getMovie(string);
+    Movie &getMovie(int);
 
     ///Get all movies which have the specific title
-    vector<Movie*> getMovies(string);
+    vector<Movie*> getMoviesByTitle(string);
 
     ///Gets all movies in alphabetical order with title as key and count as value.
     ///In ascending order
     map<string, int> getAllMovies();
-
-
 private:
     CustomerCollection customers;
     MovieCollection movies;
+
 };
 
 #endif // _app_h
