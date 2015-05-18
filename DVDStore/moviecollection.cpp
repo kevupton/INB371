@@ -44,3 +44,26 @@ void MovieCollection::removeMovie(Movie &m)  {
     }
     throw exception(); ///value not found
 }
+
+/**
+* Converts the movie collection into a new map, with the title
+* and the total count of movies with that title
+*
+* returns map<string, int> a map data type containing title and count pair values
+*/
+map<string, int> MovieCollection::toMap() {
+    map<int,Movie*>::iterator it;
+    map<string, int> new_map;
+    map<string, int>::iterator new_it;
+    string title;
+    for (it = collection.begin(); it != collection.end(); it++) { ///For each in the current collection
+        title = it->second->getTitle();
+        new_it = new_map.find(title);
+        if (new_it != new_map.end()) { ///exists in new, so plus 1
+            new_it->second++;
+        } else { ///doesnt exist
+            new_map.insert(std::pair<string, int> (title, 1));
+        }
+    }
+    return new_map;
+}
