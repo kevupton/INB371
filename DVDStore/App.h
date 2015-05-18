@@ -1,6 +1,11 @@
 #ifndef _app_h
 #define _app_h
 #include "customer.h"
+#include "customercollection.h"
+#include "movie.h"
+#include "moviecollection.h"
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -9,6 +14,12 @@ The main application class used to interact with the sub application classes
 */
 class App {
 public:
+    ///Constructor, calls the initialise method
+    App();
+
+    ///Setup method to initialise all the default values in memory
+    void initialise();
+
     ///Registers a customer in the application.
     void registerCustomer(Customer &c);
 
@@ -26,10 +37,24 @@ public:
 
     ///Gets the Customer from the registered customer collection based on
     ///Either name or id
-    Customer getCustomer(string);
-    Customer getCustomer(int);
+    Customer &getCustomer(string);
+    Customer &getCustomer(int);
+
+    ///Gets the Movie from the register movie collection based on id or name
+    Movie &getMovie(id);
+    Movie &getMovie(string);
+
+    ///Get all movies which have the specific title
+    vector<Movie*> getMovies(string);
+
+    ///Gets all movies in alphabetical order with title as key and count as value.
+    ///In ascending order
+    map<string, int> getAllMovies();
+
+
 private:
     CustomerCollection customers;
+    MovieCollection movies;
 };
 
 #endif // _app_h

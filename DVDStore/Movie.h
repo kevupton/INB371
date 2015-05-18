@@ -5,6 +5,8 @@ using namespace std;
 
 class Movie {
 public:
+    ///Checks if the current movie is being rented by anyone
+    bool isRented();
 private:
 };
 
