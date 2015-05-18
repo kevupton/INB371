@@ -32,13 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="App.h" />
-		<Unit filename="Customer.h" />
-		<Unit filename="CustomerCollection.h" />
-		<Unit filename="Movie.h" />
-		<Unit filename="MovieCollection.h" />
-		<Unit filename="Setup.h" />
+		<Unit filename="app.h" />
+		<Unit filename="controller.h" />
+		<Unit filename="customer.h" />
+		<Unit filename="customercollection.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="movie.h" />
+		<Unit filename="moviecollection.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
