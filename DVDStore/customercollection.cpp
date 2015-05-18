@@ -44,3 +44,42 @@ Customer &CustomerCollection::getByLogin(string userid) {
     }
     throw exception(); ///throw exception if not found
 }
+
+
+/**
+* Checks if the customer name already exists.
+*
+* string name the full name of the customer, ex: "Jack Chappel"
+* returns true if the name exists, else false
+*/
+bool CustomerCollection::nameExists(string name) {
+    try { ///Attempt to get the customer with the name.
+        get(name);
+        return true;
+    } catch(exception e) {}
+    return false;
+}
+
+/**
+* Attemps to add the customer to the collection
+*
+* throws exception if the name already exists
+*/
+void CustomerCollection::addCustomer(Customer &c) {
+    if (!nameExists(c.getFullName())) { ///If the name doesnt exist add it
+        collection.push_back(&c);
+    }
+    throw exception();
+}
+
+/**
+* Attempts to remove the customer from the collection
+*
+* throws exception if customer doesnt exist
+*/
+void CustomerCollection::removeCustomer(Customer &c) {
+    if (nameExists(c.getFullName())) { ///if the name exists
+        collection.erase(std::remove(collection.begin(), collection.end(), &c), collection.end());
+    }
+    throw exception();
+}
