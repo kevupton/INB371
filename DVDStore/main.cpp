@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-    cout << "kevin is a glob" << endl;
+    cout << "kevin is the swaglord glob" << endl;
     return 0;
 }
