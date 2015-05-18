@@ -4,6 +4,15 @@
 #include "customer.h"
 
 /**
+* Construct the customer collection with the app instance
+*
+* App *a the instance of the app
+*/
+CustomerCollection::CustomerCollection(App *a) {
+    app = a;
+}
+
+/**
 * Attempts to retrieve the customer with the given name.
 *
 * string name is the full name of the customer, ex: "Jack Chappel"

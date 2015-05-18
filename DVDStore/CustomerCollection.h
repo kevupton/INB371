@@ -5,9 +5,12 @@
 
 using namespace std;
 
+class App;
 class Customer;
 class CustomerCollection {
 public:
+    CustomerCollection(App *a);
+
     ///Get customer by name or login
     Customer &get(string);
     Customer &getByLogin(string);
@@ -22,6 +25,7 @@ public:
     void removeCustomer(Customer &c);
 private:
     vector<Customer*> collection;
+    App *app;
 };
 
 #endif // _customercollection_h

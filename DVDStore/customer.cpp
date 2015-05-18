@@ -1,25 +1,54 @@
 #include "customer.h"
+#include "app.h"
 
-///Constructs the customer class
-Customer::Customer(string first_name, string last_name, string phone_number, string address) {
-
+/**
+* The constructor for the customer
+*
+* string first_name the first name
+* string last_name the last name
+* string phone_number the contact number
+* string address the residential address
+* App *a the app instance
+*/
+Customer::Customer(string first_name, string last_name, string phone_number, string address, App *a) {
+    this->first_name = first_name;
+    this->last_name = last_name;
+    this->phone_number = phone_number;
+    this->address = address;
+    app = a;
 }
 
-///Gets the phone number of the customer
+/**
+* Gets the phone number of the customer
+*
+* returns string the phone number for the customer
+*/
 string Customer::getPhoneNumber() {
     return phone_number;
 }
 
-///Gets the customer full name
+/**
+* Gets the full name of the customer. (first_name + " " + last_name)
+*
+* returns string the full name
+*/
 string Customer::getFullName() {
     return first_name + " " + last_name;
 }
 
-///Gets the residential address of the customer
-string Customer::getAddress() {
+/**
+* Gets the address of the customer
+*
+* returns string the address
+*/string Customer::getAddress() {
     return address;
 }
 
+/**
+* Gets the userid of the customer. (last_name + first_name)
+*
+* returns string the userid
+*/
 string Customer::getUserID() {
     return last_name + first_name;
 }

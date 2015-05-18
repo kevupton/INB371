@@ -5,11 +5,12 @@
 
 using namespace std;
 
+class App;
 class Movie;
 class Customer {
 public:
     ///Constructs the customer class
-    Customer(string first_name, string last_name, string phone_number, string address);
+    Customer(string first_name, string last_name, string phone_number, string address, App *a);
 
     ///Gets the phone number of the customer
     string getPhoneNumber();
@@ -30,6 +31,7 @@ private:
     string last_name;
     string phone_number;
     string address;
+    App *app;
 };
 
 #endif // _customer_h

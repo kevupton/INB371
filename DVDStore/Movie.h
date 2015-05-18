@@ -4,6 +4,7 @@
 
 using namespace std;
 
+class App;
 class Customer;
 class Movie {
 public:
@@ -13,7 +14,7 @@ public:
     enum Classification {General, Parental_Guidance, Mature, Mature_Accompanied};
 
     ///constructor
-    Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date);
+    Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date, App *a);
 
     ///Checks if the current movie is being rented by anyone
     bool isRented();
@@ -52,6 +53,7 @@ private:
     Classification classification;
     string release_date;
     int customer_id;
+    App *app;
 };
 
 #endif // _movie_h

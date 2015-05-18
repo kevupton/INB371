@@ -47,10 +47,11 @@ public:
     ///Gets all movies in alphabetical order with title as key and count as value.
     ///In ascending order
     map<string, int> getAllMovies();
-private:
-    CustomerCollection customers;
-    MovieCollection movies;
 
+    CustomerCollection customers = CustomerCollection(this);
+    MovieCollection movies = MovieCollection(this);
+    RentedCollection rented = RentedCollection(this);
+private:
 };
 
 #endif // _app_h

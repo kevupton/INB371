@@ -1,6 +1,16 @@
 #include "moviecollection.h"
 #include "movie.h"
 #include <map>
+#include <algorithm>
+
+/**
+* Construct the movie collection with the app instance
+*
+* App *a the instance of the app
+*/
+MovieCollection::MovieCollection(App *a) {
+    app = a;
+}
 
 /**
 * Attempts to get the movie with the input id
@@ -66,4 +76,26 @@ map<string, int> MovieCollection::toMap() {
         }
     }
     return new_map;
+}
+
+
+/**
+* Gets all movies with the specified title
+*
+* string title the title of the movie
+* returns vector<Movie*> a vector containing instances of all movies with the same title
+*/
+vector<Movie*> MovieCollection::getAllMoviesByTitle(string title) {
+    map<int, Movie*>::iterator it;
+    transform(title.begin(), title.end(), title.begin(), ::tolower); //transform to lower
+    string s;
+    vector<Movie*> movies; //the list of  movies
+    for(it = collection.begin(); it != collection.end(); ++it) { ///check all instances
+        s = it->second->getTitle(); //the persons name
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        if (s.compare(title) == 0) { ///if the name matches then return the instance
+            movies.push_back(it->second);
+        }
+    }
+    return movies;
 }

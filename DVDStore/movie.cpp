@@ -1,7 +1,10 @@
 #include "movie.h"
+#include "app.h"
 
 ///constructor
-Movie::Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date) {}
+Movie::Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date, App *a) {
+
+}
 
 ///Checks if the current movie is being rented by anyone
 bool Movie::isRented() {}
