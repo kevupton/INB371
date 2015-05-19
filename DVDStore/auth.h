@@ -22,6 +22,10 @@ public:
     ///Gets the logged in user type
     UserType getUserType();
 
+    ///If the current user is a staff user
+    bool isStaff();
+    ///If the current user is a customer user
+    bool isCustomer();
     ///Checks to see if the user is logged in
     bool isLoggedIn();
 

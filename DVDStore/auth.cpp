@@ -70,3 +70,21 @@ Customer &Auth::getCustomer() {
 void Auth::logout() {
     user_type = NONE;
 }
+
+/**
+* Checks if the current user is logged in as staff
+*
+* returns bool true if the current user is staff, else false
+*/
+bool Auth::isStaff() {
+    return (user_type == STAFF);
+}
+
+/**
+* Checks if the current user is logged in as staff
+*
+* returns bool true if the current user is staff, else false
+*/
+bool Auth::isCustomer() {
+    return (user_type == CUSTOMER);
+}
