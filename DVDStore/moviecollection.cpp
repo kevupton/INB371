@@ -2,6 +2,7 @@
 #include "movie.h"
 #include <map>
 #include <algorithm>
+#include "app.h"
 
 /**
 * Construct the movie collection with the app instance
@@ -43,12 +44,22 @@ void MovieCollection::addMovie(Movie &m) {
 /**
 * Attempts to remove the movie from the collection
 *
-* Movie m the movie instance to add to the collection
+* Movie m the movie instance to remove from the collection
 * throws exception if the movie does not exist
 */
 void MovieCollection::removeMovie(Movie &m)  {
+    removeMovie(m.getID());
+}
+
+/**
+* Attempts to remove the movie from the collection
+*
+* int id the movie id to remove from the collection
+* throws exception if the movie does not exist
+*/
+void MovieCollection::removeMovie(int id)  {
     map<int,Movie*>::iterator it;
-    it = collection.find(m.getID());
+    it = collection.find(id);
     if (it != collection.end()) { ///if the value is found
         collection.erase(it);
     }
@@ -61,18 +72,20 @@ void MovieCollection::removeMovie(Movie &m)  {
 *
 * returns map<string, int> a map data type containing title and count pair values
 */
-map<string, int> MovieCollection::toMap() {
+map<string, int> MovieCollection::getAllAvailableMoviesAsMap() {
     map<int,Movie*>::iterator it;
     map<string, int> new_map;
     map<string, int>::iterator new_it;
     string title;
     for (it = collection.begin(); it != collection.end(); it++) { ///For each in the current collection
-        title = it->second->getTitle();
-        new_it = new_map.find(title);
-        if (new_it != new_map.end()) { ///exists in new, so plus 1
-            new_it->second++;
-        } else { ///doesnt exist
-            new_map.insert(std::pair<string, int> (title, 1));
+        if (app->rented.isMovieRented(*it->second)) { ///if the movie is not rented out
+            title = it->second->getTitle();
+            new_it = new_map.find(title);
+            if (new_it != new_map.end()) { ///exists in new, so plus 1
+                new_it->second++;
+            } else { ///doesnt exist
+                new_map.insert(std::pair<string, int> (title, 1));
+            }
         }
     }
     return new_map;

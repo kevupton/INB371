@@ -46,13 +46,16 @@ public:
 
     ///Gets all movies in alphabetical order with title as key and count as value.
     ///In ascending order
-    map<string, int> getAllMovies();
+    map<string, int> getAllAvailableMovies();
+
+    ///get all customers who are renting a particular movie
+    vector<Customer*> getAllCustomersRentingMovie(string);
 
     CustomerCollection customers = CustomerCollection(this);
     MovieCollection movies = MovieCollection(this);
     RentedCollection rented = RentedCollection(this);
-private:
     Auth auth = Auth(this);
+private:
 };
 
 #endif // _app_h

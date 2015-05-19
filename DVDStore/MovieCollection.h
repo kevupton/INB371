@@ -14,8 +14,9 @@ public:
     ///The movie collection with the app instance
     MovieCollection(App *a);
 
-    ///Converts the collection into a map containing <title, count>
-    map<string, int> toMap();
+    ///Converts the collection of available movies
+    ///into a map containing <title, count>
+    map<string, int> getAllAvailableMoviesAsMap();
 
     ///Adds a movie to the collection
     void addMovie(Movie &m);
@@ -25,6 +26,7 @@ public:
 
     ///Removes the movie from the collection
     void removeMovie(Movie &m);
+    void removeMovie(int);
 
     ///Gets all movies with the title
     vector<Movie*> getAllMoviesByTitle(string);

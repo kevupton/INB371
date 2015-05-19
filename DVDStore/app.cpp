@@ -49,45 +49,95 @@ void App::registerMovie(string title, string director, int duration, Movie::Genr
     movies.addMovie(*m);
 }
 
-
+/**
+* Registers a movie duplicating the specified movie instance
+*
+* Movie &m the movie instance of which to duplicate
+*/
 void App::registerMovieFromExisting(Movie &m) {
     Movie clone = m.clone();
     movies.addMovie(clone);
 }
 
-///Removes a movie from the movie collection
+/**
+* Removes the specified movie instance from the collection
+*
+* Movie &m the movie instance to remove
+* throws exception if the movie doesnt exist in the collection
+*/
 void App::removeMovie(Movie &m) {
-
+    movies.removeMovie(m);
 }
 
-void App::removeMovie(int) {
-
+/**
+* Removes the specified movie instance from the collection
+*
+* int id the movie ID to remove
+* throws exception if the movie doesnt exist in the collection
+*/
+void App::removeMovie(int id) {
+    movies.removeMovie(id);
 }
 
-///Gets the Customer from the registered customer collection based on
-///Either name or id
+/**
+* Gets the customer by going by their fullname (first_name + " " +  last_name)
+*
+* string fullname the full name of the customer, including first_name and last_name
+* returns Customer the customer instance in the memory
+*/
 Customer &App::getCustomer(string fullname) {
     return *&customers.get(fullname);
 }
 
-///Gets the Customer from the registered customer collection based on
-///Either name or id
+/**
+* Gets the customer by userid/loginid
+*
+* string userid their userid which they use to login
+* returns Customer the customer instance
+* throws exception if the userid is not found
+*/
 Customer &App::getCustomerByLogin(string userid) {
     return *&customers.getByLogin(userid);
 }
 
-///Gets the Movie from the register movie collection based on id or name
+/**
+* Gets the movie based on the movie id
+*
+* int id the movie id to search for
+* returns Movie the movie instance of movie id searched for
+* throws exception if movie id is not found
+*/
 Movie &App::getMovie(int id) {
     return *&movies.get(id);
 }
 
-///Get all movies which have the specific title
-vector<Movie*> App::getMoviesByTitle(string) {
-    return vector<Movie*>();
+/**
+* Gets all movies with the movie title specified
+*
+* string title the movie title to search for
+* returns vector<Movie*> a vector containing an instance  of all movies with the title
+*/
+vector<Movie*> App::getMoviesByTitle(string title) {
+    return movies.getAllMoviesByTitle(title);
 }
 
-///Gets all movies in alphabetical order with title as key and count as value.
-///In ascending order
-map<string, int> App::getAllMovies() {
-    return map<string, int>();
+/**
+* Gets all available movies (i.e. not rented out) sorted in alphabetical order by their title,
+* along with the count.
+*
+* returns map<string, int> a map of the title, count relationship of available movies
+*/
+map<string, int> App::getAllAvailableMovies() {
+    return movies.getAllAvailableMoviesAsMap();
+}
+
+/**
+* Gets all customers who are renting a particular movie
+*
+* string title the movie title to search for
+* returns vector<Customer*> the a vector containing the instances of  all customers
+* throws exception if movie title isnt found
+*/
+vector<Customer*> App::getAllCustomersRentingMovie(string title) {
+    return rented.getCustomersRentingMovie(title);
 }

@@ -6,7 +6,6 @@ using namespace std;
 int main()
 {
     Controller controller;
-    //controller.execute();
-
+    controller.execute();
     return 0;
 }
