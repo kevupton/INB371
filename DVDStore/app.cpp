@@ -9,6 +9,7 @@
 void App::initialise() {
     registerCustomer("Kevin","Upton","0417605052","3608/108 Albert St Brisbane");
     registerCustomer("JackestOF","Chappells","RARAR","Who knows? Jesus knows...");
+    registerMovie("TEST","Kevin",200,Movie::ACTION,Movie::GENERAL,"2014");
 }
 
 /**
