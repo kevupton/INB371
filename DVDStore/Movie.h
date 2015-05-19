@@ -9,9 +9,9 @@ class Customer;
 class Movie {
 public:
     ///list of all the genres a movie could have
-    enum Genre {Drama, Adventure, Family, Action, Sci_Fi, Comedy, Animated, Thriller};
+    enum Genre {DRAMA, ADVENTURE, FAMILY, ACTION, SCI_FI, COMEDY, ANIMATED, THRILLER, OTHER};
     ///all of the classifications available to a movie
-    enum Classification {General, Parental_Guidance, Mature, Mature_Accompanied};
+    enum Classification {GENERAL, PARENTAL_GUIDANCE, MATURE, MATURE_ACCOMPANIED};
 
     ///constructor
     Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date, App *a);
@@ -44,6 +44,9 @@ public:
     void setID(int);
     ///Gets the ID of the movie
     int getID();
+
+    static string parseGenre(Genre);
+    static string parseClassification(Classification);
 private:
     int id;
     string title;

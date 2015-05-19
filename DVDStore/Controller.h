@@ -12,12 +12,15 @@ class Controller {
 public:
     ///Sets up everything to do with the application
     Controller();
-
     ///Runs the while loop which runs the interface
     void execute();
 private:
     //The app instance
-    App *app;
+    App app;
+
+    /**
+    Make all the controller methods private :)
+    **/
 };
 
 #endif // _controller_h

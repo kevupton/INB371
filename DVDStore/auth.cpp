@@ -3,14 +3,15 @@
 #include <string>
 #include "app.h"
 #include "customer.h"
+#include <regex>
 
 /**
 * Creates the Auth application with
 *
 * App &a is the instance of the application
 */
-Auth::Auth(App &a) {
-    app = &a;
+Auth::Auth(App *a) {
+    app = a;
 }
 
 /**
@@ -29,9 +30,12 @@ bool Auth::attemptLogin(string userid, string password) {
         }
     } else { ///Verifiy customer account
         try { ///Attempt to get a user with the userid
-            customer = &app->getCustomerByLogin(userid);
-            user_type = CUSTOMER;
-            return true;
+            regex e ("^[0-9]{4}$");
+            if (regex_match(password, e)) { ///password is 4 numbers long
+                customer = &app->getCustomerByLogin(userid);
+                user_type = CUSTOMER;
+                return true;
+            }
         } catch(exception e) { }
     }
     user_type = NONE;

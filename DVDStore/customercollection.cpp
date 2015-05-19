@@ -63,7 +63,7 @@ Customer &CustomerCollection::getByLogin(string userid) {
 */
 bool CustomerCollection::nameExists(string name) {
     try { ///Attempt to get the customer with the name.
-        get(name);
+        Customer c = get(name);
         return true;
     } catch(exception e) {}
     return false;
@@ -77,8 +77,9 @@ bool CustomerCollection::nameExists(string name) {
 void CustomerCollection::addCustomer(Customer &c) {
     if (!nameExists(c.getFullName())) { ///If the name doesnt exist add it
         collection.push_back(&c);
+    } else {
+        throw exception();
     }
-    throw exception();
 }
 
 /**
@@ -89,6 +90,7 @@ void CustomerCollection::addCustomer(Customer &c) {
 void CustomerCollection::removeCustomer(Customer &c) {
     if (nameExists(c.getFullName())) { ///if the name exists
         collection.erase(std::remove(collection.begin(), collection.end(), &c), collection.end());
+    } else {
+        throw exception();
     }
-    throw exception();
 }

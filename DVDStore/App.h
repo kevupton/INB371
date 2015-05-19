@@ -1,5 +1,6 @@
 #ifndef _app_h
 #define _app_h
+#include "auth.h"
 #include "customer.h"
 #include "customercollection.h"
 #include "movie.h"
@@ -19,13 +20,12 @@ public:
     void initialise();
 
     ///Registers a customer in the application.
-    void registerCustomer(Customer &c);
+    void registerCustomer(string first_name, string last_name, string phone, string address);
 
     ///Removes a customer from the list of registered customers.    void removeCustomer(Customer &c);
-    void removeCustomer(int);
 
     ///Register new movie into movie collection
-    void registerMovie(Movie &m);
+    void registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date);
     ///Registers a new movie the same as the existing movie
     void registerMovieFromExisting(Movie &m);
 
@@ -52,6 +52,7 @@ public:
     MovieCollection movies = MovieCollection(this);
     RentedCollection rented = RentedCollection(this);
 private:
+    Auth auth = Auth(this);
 };
 
 #endif // _app_h

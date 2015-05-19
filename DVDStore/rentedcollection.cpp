@@ -75,3 +75,33 @@ bool RentedCollection::isMovieRented(int id) {
     it = collection.find(id);
     return (it != collection.end()); ///if the rented record exists
 }
+
+/**
+* Create a new movie rental, assigning the movie to the customer
+*
+* Movie &m  the movie to be rented
+* Customer &c the customer to be assigned to
+* throws exception if the movie is already being rented
+*/
+void RentedCollection::createRental(Movie &m, Customer &c) {
+    if (!isMovieRented(m)) {
+        collection.insert(std::pair<int, Customer*>(m.getID(), &c));
+    } else {
+        throw exception();
+    }
+}
+
+/**
+* Attempts to set the specified movie as returned, and make available again.
+*
+* throws exception if the movie was never rented out
+*/
+void RentedCollection::returnMovie(Movie &m) {
+    map<int, Customer*>::iterator it;
+    it = collection.find(m.getID());
+    if (it != collection.end()) { ///Movie is rented
+        collection.erase(it);
+    } else { ///Movie is not rented
+        throw exception();
+    }
+}

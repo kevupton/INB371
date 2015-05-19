@@ -1,19 +1,20 @@
 #ifndef _auth_h
 #define _auth_h
-#include "app.h"
-#include "customer.h"
+#include <string>
 
 using namespace std;
 
 /**
 Used for handling the authentication of the application
 */
+class App;
+class Customer;
 class Auth {
 public:
     enum UserType {CUSTOMER, STAFF, NONE};
 
     ///The constructor containing the app instance
-    Auth(App &a);
+    Auth(App *a);
 
     ///Attempt to log the user in. If success return true, else false
     bool attemptLogin(string, string);

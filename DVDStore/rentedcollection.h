@@ -19,6 +19,12 @@ public:
     ///Get all movies associated to the customer
     vector<Movie*> getCustomerMovies(Customer &c);
 
+    ///Create a new rental
+    void createRental(Movie &m, Customer &c);
+
+    ///Set a movie as returned
+    void returnMovie(Movie &m);
+
     ///Checks to see if the movie is currently being rented
     bool isMovieRented(Movie &m);
     bool isMovieRented(int);
