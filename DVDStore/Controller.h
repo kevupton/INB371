@@ -12,6 +12,8 @@ class Controller {
 public:
     ///Sets up everything to do with the application
     Controller();
+    /// clears the cin memory
+    void clearCin();
     ///Runs the while loop which runs the interface
     void execute();
 private:

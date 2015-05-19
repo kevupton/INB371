@@ -85,7 +85,7 @@
 1431989549 e:\uni\inb371\inb371\dvdstore\auth.h
 	<string>
 
-1432034478 source:h:\inb371\dvdstore\app.cpp
+1432037736 source:h:\inb371\dvdstore\app.cpp
 	"app.h"
 	<string>
 	"customer.h"
@@ -148,7 +148,7 @@
 	<iostream>
 	"controller.h"
 
-1432034478 h:\inb371\dvdstore\controller.h
+1432045606 h:\inb371\dvdstore\controller.h
 	"app.h"
 
 1432034478 source:h:\inb371\dvdstore\movie.cpp
@@ -168,4 +168,12 @@
 	"customer.h"
 	"app.h"
 	<string>
+
+1432045667 source:h:\inb371\dvdstore\controller.cpp
+	"controller.h"
+	"auth.h"
+	"app.h"
+	"customer.h"
+	<iostream>
+	<limits>
 

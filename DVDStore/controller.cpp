@@ -1,11 +1,20 @@
 #include "controller.h"
+#include "auth.h"
+#include "app.h"
+#include "customer.h"
 #include <iostream>
+#include <limits>
 
 /**
 * Initialises the application
 */
 Controller::Controller() {
     app.initialise();
+}
+
+void Controller::clearCin() {
+    cin.clear();
+    cin.ignore(numeric_limits <std::streamsize> ::max(), '\n' );
 }
 
 /**
@@ -22,7 +31,60 @@ void Controller::execute() {
             "#     #  #   #  #     #    #   #   #       #   # #    #    ####### #       \n"
             "#     #   # #   #     #    #    #  #       #    ##    #    #     # #       \n"
             "######     #    ######     #     # ####### #     #    #    #     # ####### \n";
+    string username;
+    string password;
+    string tempBecauseJackIsBadAtProgramming;
+    cout << "\n\n\n\n"
+            "Please log in \nEnter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
 
+    cout << "temp bypass of authentication, 1 for staff 2 for customer 3 for fail";
+    cin >> tempBecauseJackIsBadAtProgramming;
+
+    //cin >> Auth.attemptLogin(username, password);
+    string staffDesc[8] = {
+        "Add DVD:",
+        "Add movie:",
+        "Remove DVD:",
+        "Register a new customer:",
+        "Remove a customer:",
+        "Find a customer's phone number:",
+        "Find customers who are currently renting a particular movie:",
+        "Log Off:"
+    };
+
+     string customerDesc[7] = {
+        "Browse all movies:",
+        "Display movie information:",
+        "Rent a DVD:",
+        "Return a DVD:",
+        "List current rented movies:",
+        "Display top 10:",
+        "Log Off:"
+    };
+    int option;
+    if (tempBecauseJackIsBadAtProgramming == "1") {
+        for (int i = 0; i < 8; i++) {
+            cout << staffDesc[i] + " {" << i << "}\n";
+        }
+        while (!(cin >> option) ||!(option >= 0 && option < 8)) {
+        cout << "Please enter a valid menu number: ";
+        clearCin();
+    }
+    clearCin();
+    }
+
+    if (tempBecauseJackIsBadAtProgramming == "2") {
+        for (int i = 0; i < 7; i++) {
+            cout << customerDesc[i] + " {" << i << "}\n";
+        }
+    }
+
+    if (tempBecauseJackIsBadAtProgramming == "3") {
+        cout << "login failed";
+    }
     /**
     Create some kind of while loop
     **/
