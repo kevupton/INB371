@@ -1,4 +1,5 @@
 #include "controller.h"
+#include <iostream>
 
 /**
 * Initialises the application
@@ -11,6 +12,17 @@ Controller::Controller() {
 * The script to instantiate the interface, and interface loop
 */
 void Controller::execute() {
+    /**
+    * Print title when program is first opened.
+    */
+    cout << "######  #     # ######     ######  ####### #     # #######    #    #       \n"
+            "#     # #     # #     #    #     # #       ##    #    #      # #   #       \n"
+            "#     # #     # #     #    #     # #       # #   #    #     #   #  #       \n"
+            "#     # #     # #     #    ######  #####   #  #  #    #    #     # #       \n"
+            "#     #  #   #  #     #    #   #   #       #   # #    #    ####### #       \n"
+            "#     #   # #   #     #    #    #  #       #    ##    #    #     # #       \n"
+            "######     #    ######     #     # ####### #     #    #    #     # ####### \n";
+
     /**
     Create some kind of while loop
     **/
@@ -64,3 +76,8 @@ void Controller::execute() {
 
 ***/
 ///SWAGLORD KEVIN -- COBLAMO --
+
+
+
+
+

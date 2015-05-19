@@ -85,3 +85,87 @@
 1431989549 e:\uni\inb371\inb371\dvdstore\auth.h
 	<string>
 
+1432034478 source:h:\inb371\dvdstore\app.cpp
+	"app.h"
+	<string>
+	"customer.h"
+	<iostream>
+
+1432034478 h:\inb371\dvdstore\app.h
+	"auth.h"
+	"customer.h"
+	"customercollection.h"
+	"movie.h"
+	"moviecollection.h"
+	"rentedcollection.h"
+	<vector>
+	<map>
+
+1432034478 h:\inb371\dvdstore\auth.h
+	<string>
+
+1432034478 h:\inb371\dvdstore\customer.h
+	<string>
+	<vector>
+
+1432034478 h:\inb371\dvdstore\customercollection.h
+	<string>
+	<vector>
+
+1432034478 h:\inb371\dvdstore\movie.h
+	<string>
+
+1432034478 h:\inb371\dvdstore\moviecollection.h
+	<map>
+	<set>
+	<string>
+	<vector>
+
+1432034478 h:\inb371\dvdstore\rentedcollection.h
+	<vector>
+	<string>
+	<map>
+
+1432034478 source:h:\inb371\dvdstore\auth.cpp
+	"auth.h"
+	<algorithm>
+	<string>
+	"app.h"
+	"customer.h"
+	<regex>
+
+1432034478 source:h:\inb371\dvdstore\customer.cpp
+	"customer.h"
+	"app.h"
+
+1432034478 source:h:\inb371\dvdstore\customercollection.cpp
+	"customercollection.h"
+	<vector>
+	<algorithm>
+	"customer.h"
+
+1432034478 source:h:\inb371\dvdstore\main.cpp
+	<iostream>
+	"controller.h"
+
+1432034478 h:\inb371\dvdstore\controller.h
+	"app.h"
+
+1432034478 source:h:\inb371\dvdstore\movie.cpp
+	"movie.h"
+	"app.h"
+
+1432034478 source:h:\inb371\dvdstore\moviecollection.cpp
+	"moviecollection.h"
+	"movie.h"
+	<map>
+	<algorithm>
+	"app.h"
+
+1432034478 source:h:\inb371\dvdstore\rentedcollection.cpp
+	"rentedcollection.h"
+	"movie.h"
+	"customer.h"
+	"app.h"
+	<string>
+
