@@ -3,7 +3,7 @@
 #include <string>
 #include "app.h"
 #include "customer.h"
-#include <regex>
+#include <cstdlib>
 
 /**
 * Creates the Auth application with
@@ -30,8 +30,7 @@ bool Auth::attemptLogin(string userid, string password) {
         }
     } else { ///Verifiy customer account
         try { ///Attempt to get a user with the userid
-            regex e ("^[0-9]{4}$");
-            if (regex_match(password, e)) { ///password is 4 numbers long
+            if (validPassword(password)) { ///password is 4 numbers long
                 customer = &app->getCustomerByLogin(userid);
                 user_type = CUSTOMER;
                 return true;
@@ -87,4 +86,24 @@ bool Auth::isStaff() {
 */
 bool Auth::isCustomer() {
     return (user_type == CUSTOMER);
+}
+
+/**
+* Validates a string, determining whether it is a valid password or not
+*
+* string password the password to validate
+* returns bool true if it is a valid password, else returns false
+*/
+bool Auth::validPassword(string password) {
+    int n;
+    ///Check the password length
+    if (password.size() != 4) return false;
+    ///Loop through each character checking if it is a number
+    for (int i = 0; i < password.size(); i++) {
+        n = atoi(password.substr(i,1).c_str());
+        if (n == 0 && password[i] != '0') {
+            return false;
+        }
+    }
+    return true;
 }

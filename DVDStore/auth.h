@@ -31,7 +31,6 @@ public:
 
     ///Gets the customer object if and only if it is a customer logged in
     Customer &getCustomer();
-
     ///Log the user out of the current session
     void logout();
 private:
@@ -40,6 +39,9 @@ private:
     App *app;
     UserType user_type = NONE;
     Customer *customer;
+
+    ///Validates the password input
+    bool validPassword(string);
 };
 
 #endif // _auth_h

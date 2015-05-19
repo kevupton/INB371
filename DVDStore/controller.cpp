@@ -49,6 +49,8 @@ void Controller::execute() {
     cin >> tempBecauseJackIsBadAtProgramming;
 
     //cin >> Auth.attemptLogin(username, password);
+    ///Have to use app.auth.attemptLogin(username, password); ^^^^
+    ///Anything to do with authentication is "app.auth"
     string staffDesc[8] = {
         "Add DVD:",
         "Add movie:",
@@ -69,6 +71,7 @@ void Controller::execute() {
         "Display top 10:",
         "Log Off:"
     };
+
     int option;
     if (tempBecauseJackIsBadAtProgramming == "1") {
         for (int i = 0; i < 8; i++) {
