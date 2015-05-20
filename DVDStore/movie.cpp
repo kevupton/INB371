@@ -55,35 +55,7 @@ void Movie::setReturned() {
 * returns string the string formated value for Genre
 */
 string Movie::getGenre() {
-    switch(genre) {
-    case DRAMA:
-        return "Drama";
-        break;
-    case ADVENTURE:
-        return "Adventure";
-        break;
-    case FAMILY:
-        return "Family";
-        break;
-    case ACTION:
-        return "Action";
-        break;
-    case SCI_FI:
-        return "Sci-Fi";
-        break;
-    case COMEDY:
-        return "Comedy";
-        break;
-    case ANIMATED:
-        return "Animated";
-        break;
-    case THRILLER:
-        return "Thriller";
-        break;
-    case OTHER:
-        return "Other";
-        break;
-    }
+    return GENRE_VALUES[genre];
 }
 
 /**
@@ -119,20 +91,7 @@ int Movie::getDuration() {
 * returns string the director of the movie
 */
 string Movie::getClassification() {
-    switch(classification) {
-    case GENERAL:
-        return "G";
-        break;
-    case PARENTAL_GUIDANCE:
-        return "PG";
-        break;
-    case MATURE:
-        return "M15+";
-        break;
-    case MATURE_ACCOMPANIED:
-        return "MA15+";
-        break;
-    }
+    return CLASSIFICATION_VALUES[classification];
 }
 
 /**

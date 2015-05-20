@@ -29,7 +29,6 @@ void Controller::execute() {
     printHeader();
     int option;
     try {
-        findCustomerByMovieRental();
         while (true) {
             if (app.auth.isLoggedIn()) {
                 handleInput(requestInput());
@@ -148,9 +147,10 @@ void Controller::handleStaffInput(int option) {
         break;
 
     case FIND_CUSTOMER_BY_MOVIE_RENTAL:
-        if (!findCustomerByMovieRental()) return;
+        if (!findCustomersByMovieRental()) return;
         break;
     }
+    waitForEnter();
 }
 
 void Controller::handleCustomerInput(int option) {
@@ -182,6 +182,7 @@ void Controller::handleCustomerInput(int option) {
         if (!performDisplayTopTenMovies()) return;
         break;
     }
+    waitForEnter();
 }
 /**
 * Attempts to get a number input greater than 0
@@ -396,21 +397,32 @@ bool Controller::findPhoneNumber() {
 
 }
 
-bool Controller::findCustomerByMovieRental() {
-    cout << "\nPlease input the movie title: ";
-    string title = getTextInput();
-    try {
-        vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
-        vector<Customer*>::iterator it;
-        cout << "\n\n\n";
-        for (it = customers.begin(); it != customers.end(); it++) {
-            Customer c = **it;
-            cout << c.getFullName();
-            cout << (*it)->toString() << endl;
+/**
+* Method to display all customers who are renting a movie with the title
+*
+*/
+bool Controller::findCustomersByMovieRental() {
+    cout << "\nPlease input the movie title (0 to cancel): ";
+
+    try { ///Get the input
+        string title = getTextInput();
+        try { ///Try get all customers
+            vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
+            vector<Customer*>::iterator it;
+            cout << "\n\n\n";
+            for (it = customers.begin(); it != customers.end(); it++) {
+                Customer c = **it;
+                cout << c.getFullName();
+                cout << (*it)->toString() << endl;
+            }
+        } catch(exception e) { ///No customers were found
+            cout << "\nNo movies with title '" << title << "' found." << endl;
         }
-    } catch(exception e) {
-        cout << "\nNo movies with title '" << title << "' found." << endl;
+    } catch(exception e) { ///If 0 was inputted
+        return false;
     }
+
+    return true;
 }
 
 bool Controller::performBrowseAllMovies() {

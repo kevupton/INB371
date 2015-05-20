@@ -76,7 +76,7 @@ private:
     bool registerNewCustomer();
     bool removeCustomer();
     bool findPhoneNumber();
-    bool findCustomerByMovieRental();
+    bool findCustomersByMovieRental();
 
 
     bool performBrowseAllMovies();
