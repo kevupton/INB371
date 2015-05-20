@@ -600,7 +600,8 @@ void Controller::performListCurrentRentedMovies(){
 }
 
 /**
-* Method to display the top ten movies
+* Method to display the top ten movies in descending order
+*
 *
 */
 void Controller::performDisplayTopTenMovies(){
