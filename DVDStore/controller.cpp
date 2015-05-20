@@ -226,13 +226,13 @@ int  Controller::getNumberInput(bool use_q) {
 * throws exception if they canceled input request
 */
 string  Controller::getTextInput() {
-    getTextInput(true);
+    return getTextInput(true);
 }
 
 /**
 * Attempts to get a text input of any type. Uses 0 to cancel. Specify to trim the string
 *
-* bool trim whether to trim the string or not
+* bool q_trim whether to trim the string or not
 * returns string the input string 1 line.
 * throws exception if they canceled input request
 */
@@ -379,15 +379,19 @@ bool Controller::findPhoneNumber() {
 bool Controller::findCustomerByMovieRental() {
     cout << "\nPlease input the movie title: ";
     string title = getTextInput();
-    vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
-    vector<Customer*>::iterator it;
-    cout << "\n\n\n";
-    for (it = customers.begin(); it != customers.end(); it++) {
-        cout << (*it)->toString() << endl;
+    try {
+        vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
+        vector<Customer*>::iterator it;
+        cout << "\n\n\n";
+        for (it = customers.begin(); it != customers.end(); it++) {
+            Customer c = **it;
+            cout << c.getFullName();
+            cout << (*it)->toString() << endl;
+        }
+    } catch(exception e) {
+        cout << "\nNo movies with title '" << title << "' found." << endl;
     }
 }
-
-
 
 bool Controller::performBrowseAllMovies() {
 }

@@ -37,6 +37,7 @@ vector<Customer*> RentedCollection::getCustomersRentingMovie(string title) {
     } else { ///No movies with that title were found
         throw exception();
     }
+    return customers;
 }
 
 /**

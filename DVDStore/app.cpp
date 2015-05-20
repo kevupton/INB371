@@ -25,6 +25,7 @@ void App::initialise() {
 * string last_name the last_name,
 * string phone the phone
 * string address the address
+* returns Customer the created customer
 * throws exception if the name already exists
 */
 Customer &App::registerCustomer(string first_name, string last_name, string phone, string address) {
@@ -51,6 +52,7 @@ Customer &App::registerCustomer(string first_name, string last_name, string phon
 * Movie::Genre genre the genre of the movie
 * Movie::Classification classi the classification of the movie (MA15+, G, PG)
 * string release_date the date of release
+* returns Movie the created movie
 */
 Movie &App::registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date) {
     Movie *m = new Movie(title, director, duration, genre, classi, release_date, this);
@@ -62,6 +64,7 @@ Movie &App::registerMovie(string title, string director, int duration, Movie::Ge
 * Registers a movie duplicating the specified movie instance
 *
 * Movie &m the movie instance of which to duplicate
+* returns Movie the movie created
 */
 Movie &App::registerMovieFromExisting(Movie &m) {
     Movie clone = m.clone();
