@@ -29,6 +29,7 @@ void Controller::execute() {
     printHeader();
     int option;
     try {
+        performDisplayTopTenMovies();
         while (true) {
             if (app.auth.isLoggedIn()) {
                 handleInput(requestInput());
@@ -602,8 +603,10 @@ void Controller::performDisplayTopTenMovies(){
     createHeaderContent("Top Ten Movies");
     vector<pair<string, int> > top_ten = app.movies.getTopTenMovies();
     vector<pair<string, int> >::iterator it;
+    int c = 1;
     for (it = top_ten.begin(); it != top_ten.end(); it++) {
-        cout << it->first << it->second << endl;
+        cout << c << ": " << it->first << " - rented " << it->second <<  " times" << endl;
+        c++;
     }
 }
 

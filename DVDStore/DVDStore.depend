@@ -36,7 +36,7 @@
 	<string>
 	<vector>
 
-1432128192 source:e:\uni\inb371\inb371\dvdstore\controller.cpp
+1432129129 source:e:\uni\inb371\inb371\dvdstore\controller.cpp
 	"controller.h"
 	"auth.h"
 	"app.h"
@@ -67,7 +67,7 @@
 	"app.h"
 	<sstream>
 
-1432128811 source:e:\uni\inb371\inb371\dvdstore\rentedcollection.cpp
+1432128976 source:e:\uni\inb371\inb371\dvdstore\rentedcollection.cpp
 	"rentedcollection.h"
 	"movie.h"
 	"customer.h"
@@ -79,12 +79,13 @@
 	<string>
 	<map>
 
-1432128547 source:e:\uni\inb371\inb371\dvdstore\moviecollection.cpp
+1432129360 source:e:\uni\inb371\inb371\dvdstore\moviecollection.cpp
 	"moviecollection.h"
 	"movie.h"
 	<map>
 	<algorithm>
 	"app.h"
+	<iostream>
 
 1432078602 source:e:\uni\inb371\inb371\dvdstore\auth.cpp
 	"auth.h"
