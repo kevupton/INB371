@@ -74,21 +74,21 @@ private:
     Movie::Genre getGenreInput();
     Movie::Classification getClassificationInput();
 
-    bool performAddDVDNew();
-    bool performAddDVDExisting();
-    bool performRemoveDVD();
-    bool registerNewCustomer();
-    bool removeCustomer();
-    bool findCustomerByName();
-    bool findCustomersByMovieRental();
+    void performAddDVDNew();
+    void performAddDVDExisting();
+    void performRemoveDVD();
+    void registerNewCustomer();
+    void removeCustomer();
+    void findCustomerByName();
+    void findCustomersByMovieRental();
 
 
-    bool performBrowseAllMovies();
-    bool performDisplayMovieInfo();
-    bool performRentDVD();
-    bool performReturnDVD();
-    bool performListCurrentRentedMovies();
-    bool performDisplayTopTenMovies();
+    void performBrowseAllMovies();
+    void performDisplayMovieInfo();
+    void performRentDVD();
+    void performReturnDVD();
+    void performListCurrentRentedMovies();
+    void performDisplayTopTenMovies();
 
         /**
     Make all the controller methods private :)

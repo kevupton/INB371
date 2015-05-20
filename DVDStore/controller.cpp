@@ -119,70 +119,74 @@ void Controller::handleInput(int option) {
 
 void Controller::handleStaffInput(int option) {
     StaffMenu item = (StaffMenu) option;
-    switch(item) {
-    case S_LOG_OFF:
-        app.auth.logout();
-        break;
-    case ADD_DVD_NEW:
-        if (!performAddDVDNew()) return;
-        break;
-    case ADD_DVD_EXISTING:
-        if (!performAddDVDExisting()) return;
-        break;
+    try {
+        switch(item) {
+        case S_LOG_OFF:
+            app.auth.logout();
+            break;
+        case ADD_DVD_NEW:
+            performAddDVDNew();
+            break;
+        case ADD_DVD_EXISTING:
+            performAddDVDExisting();
+            break;
 
-    case REMOVE_DVD:
-        if (!performRemoveDVD()) return;
-        break;
+        case REMOVE_DVD:
+            performRemoveDVD();
+            break;
 
-    case REGISTER_NEW_CUSTOMER:
-        if (!registerNewCustomer()) return;
-        break;
+        case REGISTER_NEW_CUSTOMER:
+            registerNewCustomer();
+            break;
 
-    case REMOVE_CUSTOMER:
-        if (!removeCustomer()) return;
-        break;
+        case REMOVE_CUSTOMER:
+            removeCustomer();
+            break;
 
-    case FIND_PHONE_NUMBER:
-        if (!findCustomerByName()) return;
-        break;
+        case FIND_PHONE_NUMBER:
+            findCustomerByName();
+            break;
 
-    case FIND_CUSTOMER_BY_MOVIE_RENTAL:
-        if (!findCustomersByMovieRental()) return;
-        break;
-    }
-    waitForEnter();
+        case FIND_CUSTOMER_BY_MOVIE_RENTAL:
+            findCustomersByMovieRental();
+            break;
+        }
+        waitForEnter();
+    } catch(exception e) {}
 }
 
 void Controller::handleCustomerInput(int option) {
     CustomerMenu item = (CustomerMenu) option;
-    switch(item) {
-    case C_LOG_OFF:
-        app.auth.logout();
-        break;
-    case BROWSE_ALL_MOVIES:
-        if (!performBrowseAllMovies()) return;
-        break;
-    case DISPLAY_MOVIE_INFO:
-        if (!performDisplayMovieInfo()) return;
-        break;
+    try {
+        switch(item) {
+        case C_LOG_OFF:
+            app.auth.logout();
+            break;
+        case BROWSE_ALL_MOVIES:
+            performBrowseAllMovies();
+            break;
+        case DISPLAY_MOVIE_INFO:
+            performDisplayMovieInfo();
+            break;
 
-    case RENT_DVD:
-        if (!performRentDVD()) return;
-        break;
+        case RENT_DVD:
+            performRentDVD();
+            break;
 
-    case RETURN_DVD:
-        if (!performReturnDVD()) return;
-        break;
+        case RETURN_DVD:
+            performReturnDVD();
+            break;
 
-    case LIST_CURRENT_RENTED_MOVIES:
-        if (!performListCurrentRentedMovies()) return;
-        break;
+        case LIST_CURRENT_RENTED_MOVIES:
+            performListCurrentRentedMovies();
+            break;
 
-    case DISPLAY_TOP_TEN_MOVIES:
-        if (!performDisplayTopTenMovies()) return;
-        break;
-    }
-    waitForEnter();
+        case DISPLAY_TOP_TEN_MOVIES:
+            performDisplayTopTenMovies();
+            break;
+        }
+        waitForEnter();
+    } catch(exception e) {}
 }
 
 /**
@@ -369,7 +373,7 @@ Movie::Classification Controller::getClassificationInput() {
     return getTextInput();
 }
 
-bool Controller::performAddDVDNew() {
+void Controller::performAddDVDNew() {
     cout << string(15,'\n');
     cout << "Please enter movie title: ";
     string title = getTextInput();
@@ -387,24 +391,20 @@ bool Controller::performAddDVDNew() {
 }
 
 
-bool Controller::performAddDVDExisting() {
+void Controller::performAddDVDExisting() {
     try {
         //app.registerMovieFromExisting()
     } catch (exception e) {
-    cout << "Movie has not been previously registered" << endl;
+        cout << "Movie has not been previously registered" << endl;
     }
-
-    return true;
-
-
 }
 
 
-bool Controller::performRemoveDVD(){
+void Controller::performRemoveDVD(){
 
 }
 
-bool Controller::registerNewCustomer() {
+void Controller::registerNewCustomer() {
     cout << string(15,'\n');
     cout << "Please enter customer's phone number: ";
     string phone_number = getTextInput();
@@ -418,10 +418,9 @@ bool Controller::registerNewCustomer() {
     } catch(exception e) {
         cout << "Customer already exists." << endl;
     }
-    return true;
 }
 
-bool Controller::removeCustomer() {
+void Controller::removeCustomer() {
     cout << string(15,'\n');
     cout << "Please enter customer's first name: ";
     string firstName = getTextInput();
@@ -433,7 +432,6 @@ bool Controller::removeCustomer() {
     } catch(exception e) {
         cout << "coustomer does not exist" <<endl;
     }
-    return true;
 }
 
 /**
@@ -441,7 +439,7 @@ bool Controller::removeCustomer() {
 *
 * returns bool true on success or false on cancel
 */
-bool Controller::findCustomerByName() {
+void Controller::findCustomerByName() {
     try {
         Customer &c = app.getCustomer(getFullNameInput());
         cout << endl << c.toString();
@@ -464,30 +462,23 @@ string Controller::getFullNameInput() {
 *
 * returns bool true on success or false on cancel
 */
-bool Controller::findCustomersByMovieRental() {
+void Controller::findCustomersByMovieRental() {
     cout << "\nPlease input the movie title (0 to cancel): ";
-
-    try { ///Get the input
-        string title = getTextInput();
-        try { ///Try get all customers
-            vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
-            vector<Customer*>::iterator it;
-            cout << "\n\n\n";
-            for (it = customers.begin(); it != customers.end(); it++) {
-                Customer c = **it;
-                cout << (*it)->toString() << endl;
-            }
-        } catch(exception e) { ///No customers were found
-            cout << "\nNo movies with title '" << title << "' found." << endl;
+    string title = getTextInput();
+    try { ///Try get all customers
+        vector<Customer*> customers = app.getAllCustomersRentingMovie(title);
+        vector<Customer*>::iterator it;
+        cout << "\n\n\n";
+        for (it = customers.begin(); it != customers.end(); it++) {
+            Customer c = **it;
+            cout << (*it)->toString() << endl;
         }
-    } catch(exception e) { ///If 0 was inputted
-        return false;
+    } catch(exception e) { ///No customers were found
+        cout << "\nNo movies with title '" << title << "' found." << endl;
     }
-
-    return true;
 }
 
-bool Controller::performBrowseAllMovies() {
+void Controller::performBrowseAllMovies() {
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
@@ -496,15 +487,15 @@ bool Controller::performBrowseAllMovies() {
 
     }
 }
-bool Controller::performDisplayMovieInfo(){
+void Controller::performDisplayMovieInfo(){
 }
-bool Controller::performRentDVD(){
+void Controller::performRentDVD(){
 }
-bool Controller::performReturnDVD(){
+void Controller::performReturnDVD(){
 }
-bool Controller::performListCurrentRentedMovies(){
+void Controller::performListCurrentRentedMovies(){
 }
-bool Controller::performDisplayTopTenMovies(){
+void Controller::performDisplayTopTenMovies(){
 }
 
 
