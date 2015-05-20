@@ -23,6 +23,7 @@ public:
     Customer &registerCustomer(string first_name, string last_name, string phone, string address);
 
     ///Removes a customer from the list of registered customers.    void removeCustomer(Customer &c);
+    void removeCustomer(string first_name, string last_name);
 
     ///Register new movie into movie collection
     Movie &registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date);

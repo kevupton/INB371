@@ -143,7 +143,7 @@ void Controller::handleStaffInput(int option) {
         break;
 
     case FIND_PHONE_NUMBER:
-        if (!findPhoneNumber()) return;
+        if (!findCustomerByName()) return;
         break;
 
     case FIND_CUSTOMER_BY_MOVIE_RENTAL:
@@ -184,6 +184,7 @@ void Controller::handleCustomerInput(int option) {
     }
     waitForEnter();
 }
+
 /**
 * Attempts to get a number input greater than 0
 *
@@ -402,7 +403,7 @@ bool Controller::removeCustomer() {
 
 }
 
-bool Controller::findPhoneNumber() {
+bool Controller::findCustomerByName() {
 
 }
 

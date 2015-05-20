@@ -154,3 +154,15 @@ map<string, int> App::getAllAvailableMovies() {
 vector<Customer*> App::getAllCustomersRentingMovie(string title) {
     return rented.getCustomersRentingMovie(title);
 }
+
+/**
+* Removes a customer based on the first name and last name given
+*
+* string first_name the first name of the customer
+* string last_name the last name of the customer
+* throws exception if the customer is not found
+*/
+void App::removeCustomer(string first_name, string last_name) {
+    string full_name = first_name + " " + last_name;
+    removeCustomer(getCustomer(full_name));
+}

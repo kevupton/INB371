@@ -59,5 +59,14 @@ string Customer::getUserID() {
 * returns string the string instance of the Customer
 */
 string Customer::toString() {
-    return getFullName() + ", " + getPhoneNumber() + ", " + getAddress();
+    return getUserID() + ": " + getFullName() + ", " + getPhoneNumber() + ", " + getAddress();
+}
+
+/**
+* Gets the movies that the customer has rented
+*
+* returns vector<Movies*> a vector containing all the movies rented by the customer
+*/
+vector<Movie*> Customer::getRentedMovies() {
+    return app->rented.getCustomerMovies(*this);
 }
