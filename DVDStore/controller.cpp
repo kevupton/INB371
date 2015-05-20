@@ -442,7 +442,21 @@ bool Controller::removeCustomer() {
 * returns bool true on success or false on cancel
 */
 bool Controller::findCustomerByName() {
+    try {
+        Customer &c = app.getCustomer(getFullNameInput());
+        cout << endl << c.toString();
+    } catch(exception e) {
+        cout << endl << "Customer not found." << endl;
+    }
+}
 
+/**
+* Gets the full name from the input stream
+*
+* returns string the full name inputted
+*/
+string Controller::getFullNameInput() {
+    return getFirstNameInput() + " " + getLastNameInput();
 }
 
 /**
@@ -474,6 +488,13 @@ bool Controller::findCustomersByMovieRental() {
 }
 
 bool Controller::performBrowseAllMovies() {
+    Customer &c = app.auth.getCustomer();
+    vector<Movie*> movies = c.getRentedMovies();
+    vector<Movie*>::iterator it;
+
+    for (it = movies.begin(); it != movies.end(); it++) {
+
+    }
 }
 bool Controller::performDisplayMovieInfo(){
 }

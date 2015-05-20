@@ -57,6 +57,7 @@ private:
 
     string getFirstNameInput();
     string getLastNameInput();
+    string getFullNameInput();
 
     ///Waits for the enter key
     void waitForEnter();
