@@ -387,22 +387,18 @@ bool Controller::performRemoveDVD(){
 }
 
 bool Controller::registerNewCustomer() {
-    cout << string(15,'\n');
-    cout << "Please enter customer's first name: ";
-    string firstName = getTextInput();
-    cout << "Please enter customer's last name: ";
-    string lastName = getTextInput();
-    cout << "Please enter customer's phone number: ";
-    string phoneNumber = getTextInput();
-    cout << "Please enter customer's address: ";
-    string address = getTextInput();
-    app.registerCustomer(firstName,lastName,phoneNumber,address);
+
 }
 
 bool Controller::removeCustomer() {
 
 }
 
+/**
+* Method to display all customers who are renting a movie with the title
+*
+* returns bool true on success or false on cancel
+*/
 bool Controller::findCustomerByName() {
 
 }
@@ -410,6 +406,7 @@ bool Controller::findCustomerByName() {
 /**
 * Method to display all customers who are renting a movie with the title
 *
+* returns bool true on success or false on cancel
 */
 bool Controller::findCustomersByMovieRental() {
     cout << "\nPlease input the movie title (0 to cancel): ";
