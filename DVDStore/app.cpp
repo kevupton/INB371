@@ -162,7 +162,6 @@ vector<Customer*> App::getAllCustomersRentingMovie(string title) {
 * string last_name the last name of the customer
 * throws exception if the customer is not found
 */
-void App::removeCustomer(string first_name, string last_name) {
-    string full_name = first_name + " " + last_name;
+void App::removeCustomer(string full_name) {
     removeCustomer(getCustomer(full_name));
 }
