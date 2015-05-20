@@ -7,9 +7,15 @@
 * Initialise all of the default values to be in our memory base
 */
 void App::initialise() {
-    registerCustomer("Kevin","Upton","0417605052","3608/108 Albert St Brisbane");
-    registerCustomer("JackestOF","Chappells","RARAR","Who knows? Jesus knows...");
-    registerMovie("TEST","Kevin",200,Movie::ACTION,Movie::GENERAL,"2014");
+    ///Customers
+    Customer &c1 = registerCustomer("Kevin","Upton","0417605052","3608/108 Albert St Brisbane");
+    Customer &c2 = registerCustomer("JackestOF","Chappells","RARAR","Who knows? Jesus knows...");
+
+    ///Movies
+    Movie &m1 = registerMovie("TEST","Kevin",200,Movie::ACTION,Movie::GENERAL,"2014");
+
+    ///Rentals
+    m1.rentToCustomer(c1);
 }
 
 /**
@@ -24,6 +30,7 @@ void App::initialise() {
 Customer &App::registerCustomer(string first_name, string last_name, string phone, string address) {
     Customer *c = new Customer(first_name, last_name, phone, address, this);
     customers.addCustomer(*c);
+    return *c;
 }
 
 /**
@@ -48,6 +55,7 @@ Customer &App::registerCustomer(string first_name, string last_name, string phon
 Movie &App::registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date) {
     Movie *m = new Movie(title, director, duration, genre, classi, release_date, this);
     movies.addMovie(*m);
+    return *m;
 }
 
 /**
@@ -58,6 +66,7 @@ Movie &App::registerMovie(string title, string director, int duration, Movie::Ge
 Movie &App::registerMovieFromExisting(Movie &m) {
     Movie clone = m.clone();
     movies.addMovie(clone);
+    return clone;
 }
 
 /**

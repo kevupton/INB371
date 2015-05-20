@@ -29,6 +29,7 @@ void Controller::execute() {
     printHeader();
     int option;
     try {
+        findCustomerByMovieRental();
         while (true) {
             if (app.auth.isLoggedIn()) {
                 handleInput(requestInput());
