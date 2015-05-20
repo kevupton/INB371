@@ -141,7 +141,7 @@ vector<pair<string, int> > MovieCollection::getTopTenMovies() {
     string max_name = "";
     int max_val = 0;
 
-    while (new_map.size() > 0) {
+    while (new_map.size() > 0 && top_ten.size() < 10) {
         for (new_it = new_map.begin(); new_it != new_map.end(); new_it++) {
             if (max_name.size() == 0 || new_it->second > max_val) {
                 max_name = new_it->first;

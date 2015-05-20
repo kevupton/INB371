@@ -599,6 +599,10 @@ void Controller::performListCurrentRentedMovies(){
     }
 }
 
+/**
+* Method to display the top ten movies
+*
+*/
 void Controller::performDisplayTopTenMovies(){
     createHeaderContent("Top Ten Movies");
     vector<pair<string, int> > top_ten = app.movies.getTopTenMovies();
