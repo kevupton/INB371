@@ -578,6 +578,8 @@ void Controller::performReturnDVD(){
     try {
         if (app.rented.customerIsRentingMovie(m.getID(),app.auth.getCustomer().getFullName())) {
             m.setReturned();
+        } else {
+            cout  << "You are not renting this dvd" << endl;
         }
         cout <<  m.getTitle() + " has been successfully returned" << endl;
     } catch(exception e) {
