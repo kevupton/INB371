@@ -62,13 +62,16 @@ void Controller::attemptAuth() {
 int Controller::requestInput() {
     if (app.auth.isStaff()) {
         displayStaffMenu();
-        int nb = getNumberInput(false);
+        int nb = getNumberInput(true);
     } else if (app.auth.isCustomer()) {
         displayCustomerMenu();
+        int nb = getNumberInput(true);
     }
 }
 
 void Controller::displayStaffMenu() {
+      cout << string(8,'\n');
+      cout << "Staff Menu \n \n";
      string staffDesc[8] = {
         "Add DVD of a new movie:",
         "Add DVD of an existing movie:",
@@ -79,14 +82,17 @@ void Controller::displayStaffMenu() {
         "Find customers who are currently renting a particular movie:",
         "Log Off:"
     };
-        for (int i = 0; i < 7; i++) {
-            cout << staffDesc[i] + " {" << i + 1 << "}\n";
-        }
-        cout << staffDesc[7] + " {" << 0 << "}\n";
+    for (int i = 0; i < 7; i++) {
+        cout << staffDesc[i] + " {" << i + 1 << "}\n";
+    }
+    cout << staffDesc[7] + " {" << 0 << "}\n";
+    cout << "Please enter an option: ";
 }
 
 
 void Controller::displayCustomerMenu() {
+      //cout << string(10,'\n');
+      cout << "please select an option \n \n";
     string customerDesc[7] = {
         "Browse all movies:",
         "Display movie information:",
@@ -96,18 +102,30 @@ void Controller::displayCustomerMenu() {
         "Display top 10:",
         "Log Off:"
     };
-    for (int i = 0; i < 7; i++) {
-            cout << customerDesc[i] + " {" << i << "}\n";
-        }
+    for (int i = 0; i < 6; i++) {
+        cout << customerDesc[i] + " {" << i + 1 << "}\n";
+    }
+    cout << customerDesc[6] + " {" << 0 << "}\n";
+    cout << string(14,'\n');
 }
 
 void Controller::handleInput(int option) {
+    if (app.auth.isStaff()) {
+        handleStaffInput(option);
+    } else {
+        handleCustomerInput(option);
+    }
+}
+
+void Controller::handleStaffInput(int option) {
     StaffMenu item = (StaffMenu) option;
     switch(item) {
+    case S_LOG_OFF:
+        app.auth.logout();
+        break;
     case ADD_DVD_NEW:
         if (!performAddDVDNew()) return;
         break;
-
     case ADD_DVD_EXISTING:
         if (!performAddDVDExisting()) return;
         break;
@@ -131,9 +149,36 @@ void Controller::handleInput(int option) {
     case FIND_CUSTOMER_BY_MOVIE_RENTAL:
         if (!findCustomerByMovieRental()) return;
         break;
+    }
+}
 
-    case LOG_OFF:
-        throw exception();
+void Controller::handleCustomerInput(int option) {
+    CustomerMenu item = (CustomerMenu) option;
+    switch(item) {
+    case C_LOG_OFF:
+        app.auth.logout();
+        break;
+    case BROWSE_ALL_MOVIES:
+        if (!performBrowseAllMovies()) return;
+        break;
+    case DISPLAY_MOVIE_INFO:
+        if (!performDisplayMovieInfo()) return;
+        break;
+
+    case RENT_DVD:
+        if (!performRentDVD()) return;
+        break;
+
+    case RETURN_DVD:
+        if (!performReturnDVD()) return;
+        break;
+
+    case LIST_CURRENT_RENTED_MOVIES:
+        if (!performListCurrentRentedMovies()) return;
+        break;
+
+    case DISPLAY_TOP_TEN_MOVIES:
+        if (!performDisplayTopTenMovies()) return;
         break;
     }
 }
@@ -341,6 +386,14 @@ bool Controller::findCustomerByMovieRental() {
     }
 }
 
+
+
+bool Controller::performBrowseAllMovies();
+performDisplayMovieInfo();
+performRentDVD();
+performReturnDVD();
+performListCurrentRentedMovies();
+performDisplayTopTenMovies();
 
 
 /***
