@@ -378,6 +378,14 @@ bool Controller::performAddDVDNew() {
 
 
 bool Controller::performAddDVDExisting() {
+    try {
+        //app.registerMovieFromExisting()
+    } catch (exception e) {
+    cout << "Movie has not been previously registered" << endl;
+    }
+
+    return true;
+
 
 }
 
@@ -387,11 +395,37 @@ bool Controller::performRemoveDVD(){
 }
 
 bool Controller::registerNewCustomer() {
-
+    cout << string(15,'\n');
+    cout << "Please enter customer's first name: ";
+    string firstName = getTextInput();
+    cout << "Please enter customer's last name: ";
+    string lastName = getTextInput();
+    cout << "Please enter customer's phone number: ";
+    string phoneNumber = getTextInput();
+    cout << "Please enter customer's address: ";
+    string address = getTextInput();
+    try {
+        Customer &c = app.registerCustomer(firstName,lastName,phoneNumber,address);
+        cout << "Successfully registered:\n" << c.toString() << endl;
+    } catch(exception e) {
+        cout << "Customer already exists." << endl;
+    }
+    return true;
 }
 
 bool Controller::removeCustomer() {
+    cout << string(15,'\n');
+    cout << "Please enter customer's first name: ";
+    string firstName = getTextInput();
+    cout << "Please enter customer's last name: ";
+    string lastName = getTextInput();
+    string fullName = firstName + " " + lastName;
+    try {
 
+    } catch(exception e) {
+        cout << "coustomer does not exist" <<endl;
+    }
+    return true;
 }
 
 /**
