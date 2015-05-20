@@ -1,5 +1,6 @@
 #include "movie.h"
 #include "app.h"
+#include <sstream>
 
 /**
 * Decleration of static array variables
@@ -91,6 +92,17 @@ int Movie::getDuration() {
 }
 
 /**
+* Gets the formatted version of  duration
+*
+* returns string the formated duration
+*/
+string Movie::getFormattedDuration() {
+    stringstream ss;
+    ss << duration << " min";
+    return ss.str();
+}
+
+/**
 * Gets the classification of the movie, ex: MA15+
 *
 * returns string the director of the movie
@@ -141,5 +153,6 @@ int Movie::getID() {
 * returns string the string instance of the movie
 */
 string Movie::toString() {
-    return getID() + ": " + getTitle() + " " + getClassification() + ", " + getReleaseDate() + ", " + getDirector() + ", " + getGenre();
+    return getID() + ": " + getTitle() + " " + getClassification() + ", " + getReleaseDate() + ", "
+            + getDirector() + ", " + getGenre() + ", " + getFormattedDuration();
 }

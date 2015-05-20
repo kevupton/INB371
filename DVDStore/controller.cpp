@@ -322,7 +322,7 @@ vector<Movie*> Controller::getMoviesByTitle() {
 * return Movie the movie instance with the inputed ID
 * throws exception if the movie is not found
 */
-Movie Controller::getMovieInputString() {
+Movie &Controller::getMovieInputString() {
     cout << "\nPlease enter the movie title (0 to cancel): ";
     string title;
     while (true) {
@@ -549,6 +549,11 @@ void Controller::performBrowseAllMovies() {
 
 void Controller::performDisplayMovieInfo(){
     createHeaderContent("Display Movie Info");
+    Movie &m = getMovieInputString();
+    cout << "Title: " + m.getTitle() << endl;
+    cout << "Classification: " + m.getClassification() << endl;
+    cout << "Director: " + m.getDirector() << endl;
+    cout << "Genre: " + m.getGenre() << endl;
 }
 
 void Controller::performRentDVD(){

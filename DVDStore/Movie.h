@@ -40,6 +40,8 @@ public:
     string getClassification();
     ///Gets the release date
     string getReleaseDate();
+    ///Gets the formated version of the duration
+    string getFormattedDuration();
 
     ///Clones the values of the movie into a new movie class
     Movie clone();

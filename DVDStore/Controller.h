@@ -57,7 +57,7 @@ private:
     ///gets the text input either trimming or not
     string getTextInput(bool);
 
-    Movie getMovieInputString();
+    Movie &getMovieInputString();
 
     string getFirstNameInput();
     string getLastNameInput();
