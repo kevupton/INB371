@@ -135,8 +135,20 @@ vector<pair<string, int> > MovieCollection::getTopTenMovies() {
             new_map.insert(std::pair<string, int> (title, it->second->getTimesRented()));
         }
     }
+    vector<pair<string, int> > top_ten;
+    string max_name = "";
+    int max_val = 0;
 
-    return vector<pair<string, int> >();
+    while (new_map.size() > 0) {
+        for (new_it = new_map.begin(); new_it != new_map.end(); new_it++) {
+            if (max_name.size() == 0 || new_it->second > max_val) {
+                max_name = new_it->first;
+                max_val = new_it->second;
+            }
+        }
+    }
+
+    return top_ten;
 }
 
 

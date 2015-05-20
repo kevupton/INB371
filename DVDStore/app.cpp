@@ -68,7 +68,7 @@ Movie &App::registerMovie(string title, string director, int duration, Movie::Ge
 * returns Movie the movie created
 */
 Movie &App::registerMovieFromExisting(Movie &m) {
-    Movie clone = m.clone();
+    Movie &clone = m.clone();
     movies.addMovie(clone);
     return clone;
 }
