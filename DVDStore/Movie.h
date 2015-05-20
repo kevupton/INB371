@@ -45,6 +45,9 @@ public:
     ///Gets the ID of the movie
     int getID();
 
+    ///Converts the object into a string
+    string toString();
+
     static string parseGenre(Genre);
     static string parseClassification(Classification);
 private:

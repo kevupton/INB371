@@ -170,3 +170,12 @@ void Movie::setID(int id) {
 int Movie::getID() {
     return id;
 }
+
+/**
+* Converts the movie object into a readable, printable string
+*
+* returns string the string instance of the movie
+*/
+string Movie::toString() {
+    return getTitle() + " " + getClassification() + ", " + getReleaseDate() + ", " + getDirector() + ", " + getGenre();
+}

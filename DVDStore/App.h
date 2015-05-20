@@ -20,14 +20,14 @@ public:
     void initialise();
 
     ///Registers a customer in the application.
-    void registerCustomer(string first_name, string last_name, string phone, string address);
+    Customer &registerCustomer(string first_name, string last_name, string phone, string address);
 
     ///Removes a customer from the list of registered customers.    void removeCustomer(Customer &c);
 
     ///Register new movie into movie collection
-    void registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date);
+    Movie &registerMovie(string title, string director, int duration, Movie::Genre genre, Movie::Classification classi, string release_date);
     ///Registers a new movie the same as the existing movie
-    void registerMovieFromExisting(Movie &m);
+    Movie &registerMovieFromExisting(Movie &m);
 
     ///Removes a movie from the movie collection
     void removeMovie(Movie &m);

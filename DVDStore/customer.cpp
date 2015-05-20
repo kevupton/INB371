@@ -52,3 +52,12 @@ string Customer::getFullName() {
 string Customer::getUserID() {
     return last_name + first_name;
 }
+
+/**
+* Converts the Customer object into a readable, printable string
+*
+* returns string the string instance of the Customer
+*/
+string Customer::toString() {
+    return getFullName() + ", " + getPhoneNumber() + ", " + getAddress();
+}

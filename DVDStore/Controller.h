@@ -47,6 +47,8 @@ private:
 
     ///Gets a text input or 0 to cancel
     string getTextInput();
+    ///gets the text input either trimming or not
+    string getTextInput(bool);
 
     ///Waits for the enter key
     void waitForEnter();

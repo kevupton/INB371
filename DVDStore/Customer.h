@@ -24,6 +24,9 @@ public:
     ///Gets the customers userid, used to login
     string getUserID();
 
+    ///Converts the customer to a string
+    string toString();
+
     ///Gets the rented movies for the specific customer
     vector<Movie*> getRentedMovies();
 private:
