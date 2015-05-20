@@ -412,7 +412,6 @@ bool Controller::findCustomersByMovieRental() {
             cout << "\n\n\n";
             for (it = customers.begin(); it != customers.end(); it++) {
                 Customer c = **it;
-                cout << c.getFullName();
                 cout << (*it)->toString() << endl;
             }
         } catch(exception e) { ///No customers were found
