@@ -148,6 +148,22 @@ int Movie::getID() {
 }
 
 /**
+* Adds a time to the number of times this movie has been rented
+*/
+void Movie::addTimeRented() {
+    times_rented++;
+}
+
+/**
+* Gets the total times this movie has been rented
+*
+* returns int the number of times this movie has  been rented
+*/
+int Movie::getTimesRented() {
+    return times_rented;
+}
+
+/**
 * Converts the movie object into a readable, printable string
 *
 * returns string the string instance of the movie

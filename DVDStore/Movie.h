@@ -51,6 +51,9 @@ public:
     ///Gets the ID of the movie
     int getID();
 
+    void addTimeRented();
+    int getTimesRented();
+
     ///Converts the object into a string
     string toString();
 
@@ -66,6 +69,7 @@ private:
     string release_date;
     int customer_id;
     App *app;
+    int times_rented;
 };
 
 #endif // _movie_h

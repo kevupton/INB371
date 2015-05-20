@@ -540,13 +540,12 @@ void Controller::findCustomersByMovieRental() {
 void Controller::performBrowseAllMovies() {
     cout << string(15,'\n');
     createHeaderContent("Browse All Movies");
-    Customer &c = app.auth.getCustomer();
-    vector<Movie*> movies = c.getRentedMovies();
-    vector<Movie*>::iterator it;
+    map<string, int> movies_map = app.getAllAvailableMovies();
+    map<string, int>::iterator it;
 
     createHeaderContent("Browse Your Movies");
-    for (it = movies.begin(); it != movies.end(); it++) {
-        cout << (*it)->toString() << endl;
+    for (it = movies_map.begin(); it != movies_map.end(); it++) {
+        cout << it->first << ": " << it->second << endl;
     }
 }
 
@@ -573,10 +572,21 @@ void Controller::performRentDVD(){
 
 void Controller::performReturnDVD(){
     createHeaderContent("Return a DVD");
+    cout << app.rented.isMovieRented(getMovieInputString());
 }
 
 void Controller::performListCurrentRentedMovies(){
     createHeaderContent("List Current Rented Movies");
+    cout << string(15,'\n');
+    createHeaderContent("Browse All Movies");
+    Customer &c = app.auth.getCustomer();
+    vector<Movie*> movies = c.getRentedMovies();
+    vector<Movie*>::iterator it;
+
+    createHeaderContent("Browse Your Movies");
+    for (it = movies.begin(); it != movies.end(); it++) {
+        cout << (*it)->toString() << endl;
+    }
 }
 
 void Controller::performDisplayTopTenMovies(){

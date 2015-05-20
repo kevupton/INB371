@@ -98,13 +98,17 @@ map<string, int> MovieCollection::getAllAvailableMoviesAsMap() {
     map<string, int> new_map;
     map<string, int>::iterator new_it;
     string title;
+    bool is_rented;
     for (it = collection.begin(); it != collection.end(); it++) { ///For each in the current collection
         title = it->second->getTitle();
         new_it = new_map.find(title);
-        if (new_it != new_map.end() && !app->rented.isMovieRented(*it->second)) { ///exists in new, so plus 1
-            new_it->second++;
+        is_rented = app->rented.isMovieRented(*it->second);
+        if (new_it != new_map.end()) { ///exists in new, so plus 1
+            if (!is_rented) {
+                new_it->second++;
+            }
         } else { ///doesnt exist
-            new_map.insert(std::pair<string, int> (title, 1));
+            new_map.insert(std::pair<string, int> (title, is_rented? 0: 1));
         }
     }
     return new_map;

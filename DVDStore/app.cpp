@@ -13,6 +13,7 @@ void App::initialise() {
 
     ///Movies
     Movie &m1 = registerMovie("TEST","Kevin",200,Movie::ACTION,Movie::GENERAL,"2014");
+    Movie &m2 = registerMovie("TITLE","Kevin",200,Movie::ACTION,Movie::GENERAL,"2014");
 
     ///Rentals
     m1.rentToCustomer(c1);
