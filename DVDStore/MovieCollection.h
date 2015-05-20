@@ -17,6 +17,7 @@ public:
     ///Converts the collection of available movies
     ///into a map containing <title, count>
     map<string, int> getAllAvailableMoviesAsMap();
+    vector<pair<string, int> > getTopTenMovies();
 
     ///Adds a movie to the collection
     void addMovie(Movie &m);

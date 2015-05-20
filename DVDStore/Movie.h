@@ -44,7 +44,7 @@ public:
     string getFormattedDuration();
 
     ///Clones the values of the movie into a new movie class
-    Movie clone();
+    Movie &clone();
 
     ///Sets the ID for a given movie, for future reference
     void setID(int);

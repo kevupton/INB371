@@ -116,6 +116,31 @@ map<string, int> MovieCollection::getAllAvailableMoviesAsMap() {
 
 
 /**
+* Get the top ten movies rented by customers
+*
+* returns map<int, string> a map data type containing title and count pair values
+*/
+vector<pair<string, int> > MovieCollection::getTopTenMovies() {
+    map<int,Movie*>::iterator it;
+    map<string, int> new_map;
+    map<string, int>::iterator new_it;
+    string title;
+    bool is_rented;
+    for (it = collection.begin(); it != collection.end(); it++) { ///For each in the current collection
+        title = it->second->getTitle();
+        new_it = new_map.find(title);
+        if (new_it != new_map.end()) { ///exists in new, so plus 1
+            new_it->second += it->second->getTimesRented();
+        } else { ///doesnt exist
+            new_map.insert(std::pair<string, int> (title, it->second->getTimesRented()));
+        }
+    }
+
+    return vector<pair<string, int> >();
+}
+
+
+/**
 * Gets all movies with the specified title
 *
 * string title the title of the movie

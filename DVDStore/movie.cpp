@@ -125,8 +125,9 @@ string Movie::getReleaseDate() {
 *
 * returns Movie a new instance of the movie class
 */
-Movie Movie::clone() {
-    return *new Movie(title,director,duration,genre,classification,release_date,app);
+Movie &Movie::clone() {
+    Movie *clone = new Movie(title,director,duration,genre,classification,release_date,app);
+    return *clone;
 }
 
 /**
