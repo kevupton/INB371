@@ -47,6 +47,8 @@ void Controller::printHeader() {
             "#     #  #   #  #     #    #   #   #       #   # #    #    ####### #       \n"
             "#     #   # #   #     #    #    #  #       #    ##    #    #     # #       \n"
             "######     #    ######     #     # ####### #     #    #    #     # ####### \n";
+
+    cout << "Authors: \nKevin Upton n9214305 \nJack Chappell n9185216";
 }
 
 void Controller::attemptAuth() {
@@ -366,7 +368,7 @@ string &Controller::trim(std::string &s) {
 }
 
 void Controller::createHeaderContent(string title) {
-    cout << string(13,'\n');
+    cout << string(10,'\n');
     cout << string(45, '#') << endl;
     cout << "\t" + title + "\t\n";
     cout << string(45, '#') << endl;
@@ -433,6 +435,8 @@ void Controller::performAddDVDNew() {
 void Controller::performAddDVDExisting() {
     cout << string(15,'\n');
     createHeaderContent("Add DVD of an Existing Movie");
+    cout << "Please enter movie title: ";
+    string title = getTextInput();
     try {
         //app.registerMovieFromExisting()
     } catch (exception e) {
