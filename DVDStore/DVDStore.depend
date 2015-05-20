@@ -62,9 +62,10 @@
 	<algorithm>
 	"customer.h"
 
-1432119696 source:e:\uni\inb371\inb371\dvdstore\movie.cpp
+1432123439 source:e:\uni\inb371\inb371\dvdstore\movie.cpp
 	"movie.h"
 	"app.h"
+	<sstream>
 
 1432103914 source:e:\uni\inb371\inb371\dvdstore\rentedcollection.cpp
 	"rentedcollection.h"

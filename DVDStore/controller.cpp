@@ -252,7 +252,7 @@ string  Controller::getTextInput(bool q_trim) {
         if (q_trim) value = trim(value);
         if (value.size() > 0) { //Checks that the value has a length
             if (value.compare("0") == 0) {
-                throw new exception();
+                throw exception();
             }
             return value;
         } else { //invalid integer
@@ -551,26 +551,33 @@ void Controller::performBrowseAllMovies() {
 void Controller::performDisplayMovieInfo(){
     createHeaderContent("Display Movie Info");
     Movie &m = getMovieInputString();
+    cout << "\n\n";
     cout << "Title: " + m.getTitle() << endl;
     cout << "Classification: " + m.getClassification() << endl;
     cout << "Director: " + m.getDirector() << endl;
     cout << "Genre: " + m.getGenre() << endl;
+    cout << "Duration: " + m.getFormattedDuration() << endl;
 }
 
 void Controller::performRentDVD(){
-    cout << string(15,'\n');
     createHeaderContent("Rent a DVD");
+    Movie &m = getMovieInputString();
+    try {
+        m.rentToCustomer(app.auth.getCustomer());
+    } catch(exception e) {
+        cout << "Movie already currently rented out";
+    }
 }
+
 void Controller::performReturnDVD(){
-    cout << string(15,'\n');
     createHeaderContent("Return a DVD");
 }
+
 void Controller::performListCurrentRentedMovies(){
-    cout << string(15,'\n');
     createHeaderContent("List Current Rented Movies");
 }
+
 void Controller::performDisplayTopTenMovies(){
-    cout << string(15,'\n');
     createHeaderContent("Top Ten Movies");
 }
 
