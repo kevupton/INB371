@@ -146,6 +146,8 @@ vector<pair<string, int> > MovieCollection::getTopTenMovies() {
                 max_val = new_it->second;
             }
         }
+        top_ten.push_back(pair<string, int> (max_name, max_val));
+        new_map.erase(new_map.find(max_name));
     }
 
     return top_ten;

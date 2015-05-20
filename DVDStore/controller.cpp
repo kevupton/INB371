@@ -447,11 +447,15 @@ void Controller::performAddDVDExisting() {
 }
 
 
-void Controller::performRemoveDVD(){
-    cout << string(15,'\n');
+void Controller::performRemoveDVD() {
     createHeaderContent("Remove DVD");
+    Movie &m = getMovieInputString();
+    try {
+        app.removeMovie(m);
+    } catch(exception e) {
+        cout << "Movie not found.";
+    }
 }
-
 
 void Controller::registerNewCustomer() {
     cout << string(15,'\n');
@@ -582,8 +586,6 @@ void Controller::performReturnDVD(){
 
 void Controller::performListCurrentRentedMovies(){
     createHeaderContent("List Current Rented Movies");
-    cout << string(15,'\n');
-    createHeaderContent("Browse All Movies");
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
@@ -595,6 +597,11 @@ void Controller::performListCurrentRentedMovies(){
 
 void Controller::performDisplayTopTenMovies(){
     createHeaderContent("Top Ten Movies");
+    vector<pair<string, int> > top_ten = app.movies.getTopTenMovies();
+    vector<pair<string, int> >::iterator it;
+    for (it = top_ten.begin(); it != top_ten.end(); it++) {
+        cout << it->first << it->second << endl;
+    }
 }
 
 
