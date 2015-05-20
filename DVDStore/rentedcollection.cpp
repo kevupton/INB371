@@ -87,6 +87,7 @@ bool RentedCollection::isMovieRented(int id) {
 void RentedCollection::createRental(Movie &m, Customer &c) {
     if (!isMovieRented(m)) {
         collection.insert(std::pair<int, Customer*>(m.getID(), &c));
+        m.addTimeRented();
     } else {
         throw exception();
     }

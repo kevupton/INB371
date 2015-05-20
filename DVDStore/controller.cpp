@@ -383,7 +383,7 @@ Movie::Genre Controller::getGenreInput() {
     for (int i = 0; i < Movie::GENRE_SIZE; i++) {
         cout << Movie::GENRE_VALUES[i] + " {" << i + 1 << "}\n";
     }
-    cout << "Please select an opton: ";
+    cout << "/nPlease select an opton: ";
     return (Movie::Genre) (getNumberInput() - 1);
 }
 
@@ -393,7 +393,7 @@ Movie::Classification Controller::getClassificationInput() {
     for (int i = 0; i < Movie::CLASSIFICATION_SIZE; i++) {
         cout << Movie::CLASSIFICATION_VALUES[i] + " {" << i + 1 << "}\n";
     }
-    cout << "Please select an opton: ";
+    cout << "/nPlease select an opton: ";
     return (Movie::Classification) (getNumberInput() - 1);
 }
 
@@ -420,18 +420,18 @@ string Controller::getAddressInput() {
 void Controller::performAddDVDNew() {
     cout << string(15,'\n');
     createHeaderContent("Add DVD of a New Movie");
-    cout << "Please enter movie title: ";
+    cout << "\nPlease enter movie title: ";
     string title = getTextInput();
-    cout << "Please enter movie director: ";
+    cout << "\nPlease enter movie director: ";
     string director = getTextInput();
-    cout << "Please enter movie duration: ";
+    cout << "\nPlease enter movie duration: ";
     int duration = getNumberInput();
     Movie::Genre genre = getGenreInput();
     Movie::Classification classification = getClassificationInput();
-    cout << "Please enter movie release date: ";
+    cout << "\nPlease enter movie release date: ";
     string release_date = getTextInput();
     Movie &m = app.registerMovie(title, director, duration, genre, classification, release_date);
-    cout << "Successfully registered:\n" << m.toString() << endl;
+    cout << "\nSuccessfully registered:\n" << m.toString() << endl;
 }
 
 
@@ -517,7 +517,6 @@ string Controller::getFullNameInput() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomersByMovieRental() {
-    cout << string(15,'\n');
     createHeaderContent("Find Customers By Movie Rental");
     cout << "\nPlease input the movie title (0 to cancel): ";
     string title = getTextInput();
@@ -538,12 +537,10 @@ void Controller::findCustomersByMovieRental() {
 * Browses the users movies. Displays all movies that the use is renting
 */
 void Controller::performBrowseAllMovies() {
-    cout << string(15,'\n');
     createHeaderContent("Browse All Movies");
     map<string, int> movies_map = app.getAllAvailableMovies();
     map<string, int>::iterator it;
 
-    createHeaderContent("Browse Your Movies");
     for (it = movies_map.begin(); it != movies_map.end(); it++) {
         cout << it->first << ": " << it->second << endl;
     }
@@ -565,6 +562,7 @@ void Controller::performRentDVD(){
     Movie &m = getMovieInputString();
     try {
         m.rentToCustomer(app.auth.getCustomer());
+        cout <<  m.getTitle() + " has been successfully rented" << endl;
     } catch(exception e) {
         cout << "Movie already currently rented out";
     }
@@ -572,7 +570,14 @@ void Controller::performRentDVD(){
 
 void Controller::performReturnDVD(){
     createHeaderContent("Return a DVD");
-    cout << app.rented.isMovieRented(getMovieInputString());
+    Movie &m = getMovieInputString();
+    try {
+        //can return a dvd you dont have rented
+        m.setReturned();
+        cout <<  m.getTitle() + " has been successfully returned" << endl;
+    } catch(exception e) {
+        cout << "You dont have this movie rented";
+    }
 }
 
 void Controller::performListCurrentRentedMovies(){
@@ -593,54 +598,6 @@ void Controller::performDisplayTopTenMovies(){
     createHeaderContent("Top Ten Movies");
 }
 
-
-/***
-    ,o888888o.        ,o888888o.
-   8888     `88.   . 8888     `88.
-,8 8888       `8. ,8 8888       `8b
-88 8888           88 8888        `8b
-88 8888           88 8888         88
-88 8888           88 8888         88
-88 8888   8888888 88 8888        ,8P
-`8 8888       .8' `8 8888       ,8P
-   8888     ,88'   ` 8888     ,88'
-    `8888888P'        `8888888P'
-
-    ,o888888o.    8 888888888o.            .8.           8888888888',8888' `8.`8888.      ,8'
-   8888     `88.  8 8888    `88.          .888.                 ,8',8888'   `8.`8888.    ,8'
-,8 8888       `8. 8 8888     `88         :88888.               ,8',8888'     `8.`8888.  ,8'
-88 8888           8 8888     ,88        . `88888.             ,8',8888'       `8.`8888.,8'
-88 8888           8 8888.   ,88'       .8. `88888.           ,8',8888'         `8.`88888'
-88 8888           8 888888888P'       .8`8. `88888.         ,8',8888'           `8. 8888
-88 8888           8 8888`8b          .8' `8. `88888.       ,8',8888'             `8 8888
-`8 8888       .8' 8 8888 `8b.       .8'   `8. `88888.     ,8',8888'               8 8888
-   8888     ,88'  8 8888   `8b.    .888888888. `88888.   ,8',8888'                8 8888
-    `8888888P'    8 8888     `88. .8'       `8. `88888. ,8',8888888888888         8 8888
-          .         .
-         ,8.       ,8.           ,o888888o. 8888888 8888888888 8 8888        8 8 8888888888   8 888888888o.
-        ,888.     ,888.       . 8888     `88.     8 8888       8 8888        8 8 8888         8 8888    `88.
-       .`8888.   .`8888.     ,8 8888       `8b    8 8888       8 8888        8 8 8888         8 8888     `88
-      ,8.`8888. ,8.`8888.    88 8888        `8b   8 8888       8 8888        8 8 8888         8 8888     ,88
-     ,8'8.`8888,8^8.`8888.   88 8888         88   8 8888       8 8888        8 8 888888888888 8 8888.   ,88'
-    ,8' `8.`8888' `8.`8888.  88 8888         88   8 8888       8 8888        8 8 8888         8 888888888P'
-   ,8'   `8.`88'   `8.`8888. 88 8888        ,8P   8 8888       8 8888888888888 8 8888         8 8888`8b
-  ,8'     `8.`'     `8.`8888.`8 8888       ,8P    8 8888       8 8888        8 8 8888         8 8888 `8b.
- ,8'       `8        `8.`8888.` 8888     ,88'     8 8888       8 8888        8 8 8888         8 8888   `8b.
-,8'         `         `8.`8888.  `8888888P'       8 8888       8 8888        8 8 888888888888 8 8888     `88.
-
-8 8888888888   8 8888      88     ,o888888o.    8 8888     ,88' 8 8888888888   8 888888888o.
-8 8888         8 8888      88    8888     `88.  8 8888    ,88'  8 8888         8 8888    `88.
-8 8888         8 8888      88 ,8 8888       `8. 8 8888   ,88'   8 8888         8 8888     `88
-8 8888         8 8888      88 88 8888           8 8888  ,88'    8 8888         8 8888     ,88
-8 888888888888 8 8888      88 88 8888           8 8888 ,88'     8 888888888888 8 8888.   ,88'
-8 8888         8 8888      88 88 8888           8 8888 88'      8 8888         8 888888888P'
-8 8888         8 8888      88 88 8888           8 888888<       8 8888         8 8888`8b
-8 8888         ` 8888     ,8P `8 8888       .8' 8 8888 `Y8.     8 8888         8 8888 `8b.
-8 8888           8888   ,d8P     8888     ,88'  8 8888   `Y8.   8 8888         8 8888   `8b.
-8 8888            `Y88888P'       `8888888P'    8 8888     `Y8. 8 888888888888 8 8888     `88.
-
-***/
-///SWAGLORD KEVIN -- COBLAMO --
 
 
 
