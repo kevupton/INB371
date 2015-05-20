@@ -83,8 +83,9 @@ void MovieCollection::removeMovie(int id)  {
     it = collection.find(id);
     if (it != collection.end()) { ///if the value is found
         collection.erase(it);
+    } else {
+        throw exception(); ///value not found
     }
-    throw exception(); ///value not found
 }
 
 /**
