@@ -23,6 +23,7 @@ public:
 
     ///Gets the movie by the ID of the movie
     Movie &get(int);
+    Movie &get(string);
 
     ///Removes the movie from the collection
     void removeMovie(Movie &m);

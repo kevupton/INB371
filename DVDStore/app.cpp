@@ -124,6 +124,10 @@ Movie &App::getMovie(int id) {
     return *&movies.get(id);
 }
 
+Movie &App::getMovie(string title) {
+    return *&movies.get(title);
+}
+
 /**
 * Gets all movies with the movie title specified
 *

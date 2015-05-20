@@ -30,6 +30,27 @@ Movie &MovieCollection::get(int id) {
 
 
 /**
+* Attempts to get the first movie with the specified ID.
+*
+* string title the title of the movie
+* returns Movie a movie instance contain
+*/
+Movie &MovieCollection::get(string title) {
+    map<int, Movie*>::iterator it;
+    transform(title.begin(), title.end(), title.begin(), ::tolower); //transform to lower
+    string s;
+    vector<Movie*> movies; //the list of  movies
+    for(it = collection.begin(); it != collection.end(); ++it) { ///check all instances
+        s = it->second->getTitle(); //the persons name
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        if (s.compare(title) == 0) { ///if the name matches then return the instance
+            return *(it->second);
+        }
+    }
+    throw exception();
+}
+
+/**
 * Adds a movie to the collection
 *
 * Movie m the movie instance to add to the collection

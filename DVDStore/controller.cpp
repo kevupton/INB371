@@ -320,8 +320,17 @@ vector<Movie*> Controller::getMoviesByTitle() {
 * return Movie the movie instance with the inputed ID
 * throws exception if the movie is not found
 */
-Movie Controller::getMovieByID() {
-    return app.getMovie(getNumberInput());
+Movie Controller::getMovieInputString() {
+    cout << "\nPlease enter the movie title (0 to cancel): ";
+    string title;
+    while (true) {
+        title = getTextInput();
+        try {
+            return app.getMovie(title);
+        } catch(exception e) {
+            cout << "\nMovie not found, please enter valid title: ";
+        }
+    }
 }
 
 /**
@@ -438,14 +447,9 @@ void Controller::registerNewCustomer() {
 }
 
 void Controller::removeCustomer() {
-    cout << string(15,'\n');
-    cout << "Please enter customer's first name: ";
-    string firstName = getTextInput();
-    cout << "Please enter customer's last name: ";
-    string lastName = getTextInput();
-    string fullName = firstName + " " + lastName;
+    string full_name = getFullNameInput();
     try {
-
+        app.removeCustomer(full_name);
     } catch(exception e) {
         cout << "coustomer does not exist" <<endl;
     }
@@ -471,7 +475,9 @@ void Controller::findCustomerByName() {
 * returns string the full name inputted
 */
 string Controller::getFullNameInput() {
-    return getFirstNameInput() + " " + getLastNameInput();
+    string first_name = getFirstNameInput();
+    string last_name = getLastNameInput();
+    return first_name + " " + last_name;
 }
 
 /**
@@ -495,17 +501,24 @@ void Controller::findCustomersByMovieRental() {
     }
 }
 
+/**
+* Browses the users movies. Displays all movies that the use is renting
+*/
 void Controller::performBrowseAllMovies() {
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
 
+    createHeaderContent("Browse Your Movies");
     for (it = movies.begin(); it != movies.end(); it++) {
-
+        cout << (*it)->toString() << endl;
     }
 }
+
 void Controller::performDisplayMovieInfo(){
+
 }
+
 void Controller::performRentDVD(){
 }
 void Controller::performReturnDVD(){

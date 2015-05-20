@@ -136,5 +136,5 @@ int Movie::getID() {
 * returns string the string instance of the movie
 */
 string Movie::toString() {
-    return getTitle() + " " + getClassification() + ", " + getReleaseDate() + ", " + getDirector() + ", " + getGenre();
+    return getID() + ": " + getTitle() + " " + getClassification() + ", " + getReleaseDate() + ", " + getDirector() + ", " + getGenre();
 }

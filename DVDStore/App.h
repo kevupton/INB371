@@ -41,6 +41,7 @@ public:
 
     ///Gets the Movie from the register movie collection based on id or name
     Movie &getMovie(int);
+    Movie &getMovie(string);
 
     ///Get all movies which have the specific title
     vector<Movie*> getMoviesByTitle(string);
