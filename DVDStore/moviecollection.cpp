@@ -115,6 +115,7 @@ map<string, int> MovieCollection::getAllAvailableMoviesAsMap() {
     return new_map;
 }
 
+#include <iostream>
 
 /**
 * Get the top ten movies rented by customers
@@ -149,6 +150,8 @@ vector<pair<string, int> > MovieCollection::getTopTenMovies() {
         }
         top_ten.push_back(pair<string, int> (max_name, max_val));
         new_map.erase(new_map.find(max_name));
+        max_name = "";
+        max_val = 0;
     }
 
     return top_ten;
