@@ -576,8 +576,9 @@ void Controller::performReturnDVD(){
     createHeaderContent("Return a DVD");
     Movie &m = getMovieInputString();
     try {
-        //can return a dvd you dont have rented
-        m.setReturned();
+        if (app.rented.customerIsRentingMovie(m.getID(),app.auth.getCustomer().getFullName())) {
+            m.setReturned();
+        }
         cout <<  m.getTitle() + " has been successfully returned" << endl;
     } catch(exception e) {
         cout << "You dont have this movie rented";

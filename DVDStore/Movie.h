@@ -69,7 +69,7 @@ private:
     string release_date;
     int customer_id;
     App *app;
-    int times_rented;
+    int times_rented = 0;
 };
 
 #endif // _movie_h

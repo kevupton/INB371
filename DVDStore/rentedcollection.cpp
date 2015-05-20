@@ -94,6 +94,22 @@ void RentedCollection::createRental(Movie &m, Customer &c) {
 }
 
 /**
+* Checks to see if the user is renting the specific movie
+*
+* int movie_id the movie id of the movie
+* string full_name the name of the customer
+* returns bool true if the customer is renting the specified dvd
+*/
+bool RentedCollection::customerIsRentingMovie(int movie_id, string full_name) {
+    map<int, Customer*>::iterator it;
+    it = collection.find(movie_id);
+    if (it != collection.end()) {
+        return (it->second->getFullName().compare(full_name) == 0);
+    }
+    return false;
+}
+
+/**
 * Attempts to set the specified movie as returned, and make available again.
 *
 * throws exception if the movie was never rented out

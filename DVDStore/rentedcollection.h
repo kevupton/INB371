@@ -22,6 +22,9 @@ public:
     ///Create a new rental
     void createRental(Movie &m, Customer &c);
 
+    ///Checks to see if the customer is renting the movie
+    bool customerIsRentingMovie(int,string);
+
     ///Set a movie as returned
     void returnMovie(Movie &m);
 
