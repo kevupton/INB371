@@ -373,11 +373,23 @@ void Controller::createHeaderContent(string title) {
 }
 
 Movie::Genre Controller::getGenreInput() {
-
+    cout << "\n";
+    cout << "Please enter movie genre: ";
+    for (int i = 0; i < Movie::GENRE_SIZE; i++) {
+        cout << Movie::GENRE_VALUES[i] + " {" << i + 1 << "}\n";
+    }
+    cout << "Please select an opton: ";
+    return (Movie::Genre) (getNumberInput() - 1);
 }
 
 Movie::Classification Controller::getClassificationInput() {
-
+    cout << "\n";
+    cout << "Please enter movie classification: ";
+    for (int i = 0; i < Movie::CLASSIFICATION_SIZE; i++) {
+        cout << Movie::CLASSIFICATION_VALUES[i] + " {" << i + 1 << "}\n";
+    }
+    cout << "Please select an opton: ";
+    return (Movie::Classification) (getNumberInput() - 1);
 }
 
  string Controller::getFirstNameInput() {
@@ -402,23 +414,25 @@ string Controller::getAddressInput() {
 
 void Controller::performAddDVDNew() {
     cout << string(15,'\n');
+    createHeaderContent("Add DVD of a New Movie");
     cout << "Please enter movie title: ";
     string title = getTextInput();
     cout << "Please enter movie director: ";
     string director = getTextInput();
     cout << "Please enter movie duration: ";
     int duration = getNumberInput();
-    cout << "Please enter movie genre: ";
     Movie::Genre genre = getGenreInput();
-    cout << "Please enter movie classification: ";
     Movie::Classification classification = getClassificationInput();
     cout << "Please enter movie release date: ";
     string release_date = getTextInput();
-    app.registerMovie(title, director, duration, genre, classification, release_date);
+    Movie &m = app.registerMovie(title, director, duration, genre, classification, release_date);
+    cout << "Successfully registered:\n" << m.toString() << endl;
 }
 
 
 void Controller::performAddDVDExisting() {
+    cout << string(15,'\n');
+    createHeaderContent("Add DVD of an Existing Movie");
     try {
         //app.registerMovieFromExisting()
     } catch (exception e) {
@@ -428,17 +442,24 @@ void Controller::performAddDVDExisting() {
 
 
 void Controller::performRemoveDVD(){
-
+    cout << string(15,'\n');
+    createHeaderContent("Remove DVD");
 }
 
+
 void Controller::registerNewCustomer() {
+    cout << string(15,'\n');
     createHeaderContent("Register New Customer");
+    string first_name = getFirstNameInput();
+    string last_name = getLastNameInput();
+    string phone_number = getPhoneNumberInput();
+    string address = getAddressInput();
     try {
         Customer &c = app.registerCustomer(
-            getFirstNameInput(),
-            getLastNameInput(),
-            getPhoneNumberInput(),
-            getAddressInput()
+            first_name,
+            last_name,
+            phone_number,
+            address
         );
         cout << "Successfully registered:\n" << c.toString() << endl;
     } catch(exception e) {
@@ -447,6 +468,7 @@ void Controller::registerNewCustomer() {
 }
 
 void Controller::removeCustomer() {
+    createHeaderContent("Remove Customer");
     string full_name = getFullNameInput();
     try {
         app.removeCustomer(full_name);
@@ -461,6 +483,8 @@ void Controller::removeCustomer() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomerByName() {
+    cout << string(15,'\n');
+    createHeaderContent("Find Customer By Name");
     try {
         Customer &c = app.getCustomer(getFullNameInput());
         cout << endl << c.toString();
@@ -486,6 +510,8 @@ string Controller::getFullNameInput() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomersByMovieRental() {
+    cout << string(15,'\n');
+    createHeaderContent("Find Customers By Movie Rental");
     cout << "\nPlease input the movie title (0 to cancel): ";
     string title = getTextInput();
     try { ///Try get all customers
@@ -505,6 +531,8 @@ void Controller::findCustomersByMovieRental() {
 * Browses the users movies. Displays all movies that the use is renting
 */
 void Controller::performBrowseAllMovies() {
+    cout << string(15,'\n');
+    createHeaderContent("Browse All Movies");
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
@@ -516,16 +544,24 @@ void Controller::performBrowseAllMovies() {
 }
 
 void Controller::performDisplayMovieInfo(){
-
+    createHeaderContent("Display Movie Info");
 }
 
 void Controller::performRentDVD(){
+    cout << string(15,'\n');
+    createHeaderContent("Rent a DVD");
 }
 void Controller::performReturnDVD(){
+    cout << string(15,'\n');
+    createHeaderContent("Return a DVD");
 }
 void Controller::performListCurrentRentedMovies(){
+    cout << string(15,'\n');
+    createHeaderContent("List Current Rented Movies");
 }
 void Controller::performDisplayTopTenMovies(){
+    cout << string(15,'\n');
+    createHeaderContent("Top Ten Movies");
 }
 
 

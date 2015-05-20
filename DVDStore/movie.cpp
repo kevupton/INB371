@@ -2,6 +2,11 @@
 #include "app.h"
 
 /**
+* Decleration of static array variables
+*/
+const string Movie::GENRE_VALUES[] = {"Drama", "Adventure", "Family", "Action", "Sci-Fi", "Comedy", "Animated", "Thriller", "Other"};
+const string Movie::CLASSIFICATION_VALUES[] = {"G", "PG", "M15+", "MA15+"};
+/**
 * The constructor for the movie, used to set it up
 *
 * string title the title

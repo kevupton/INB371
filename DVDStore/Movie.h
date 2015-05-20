@@ -11,12 +11,12 @@ public:
     ///list of all the genres a movie could have
     enum Genre {DRAMA, ADVENTURE, FAMILY, ACTION, SCI_FI, COMEDY, ANIMATED, THRILLER, OTHER};
     static const int GENRE_SIZE = 9;
-    const string GENRE_VALUES[GENRE_SIZE] = {"Drama", "Adventure", "Family", "Action", "Sci-Fi", "Comedy", "Animated", "Thriller", "Other"};
+    const static string GENRE_VALUES[];
 
     ///all of the classifications available to a movie
     enum Classification {GENERAL, PARENTAL_GUIDANCE, MATURE, MATURE_ACCOMPANIED};
     static const int CLASSIFICATION_SIZE = 4;
-    const string CLASSIFICATION_VALUES[CLASSIFICATION_SIZE] = {"G", "PG", "M15+", "MA15+"};
+    const static string CLASSIFICATION_VALUES[];
     ///constructor
     Movie(string title, string director, int duration, Genre genre, Classification classi, string release_date, App *a);
 
