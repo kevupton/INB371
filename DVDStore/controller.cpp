@@ -27,7 +27,6 @@ void Controller::clearCin() {
 */
 void Controller::execute() {
     printHeader();
-    int option;
     try {
         while (true) {
             if (app.auth.isLoggedIn()) {
