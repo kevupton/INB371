@@ -29,7 +29,6 @@ void Controller::execute() {
     printHeader();
     int option;
     try {
-        performDisplayTopTenMovies();
         while (true) {
             if (app.auth.isLoggedIn()) {
                 handleInput(requestInput());
@@ -573,6 +572,11 @@ void Controller::performRentDVD(){
     }
 }
 
+/**
+* Method to return a specific dvd
+*
+* throws exception if the dvd is not found
+*/
 void Controller::performReturnDVD(){
     createHeaderContent("Return a DVD");
     Movie &m = getMovieInputString();
@@ -588,6 +592,9 @@ void Controller::performReturnDVD(){
     }
 }
 
+/**
+* Method to display the currently rented movies
+*/
 void Controller::performListCurrentRentedMovies(){
     createHeaderContent("List Current Rented Movies");
     Customer &c = app.auth.getCustomer();
@@ -601,8 +608,6 @@ void Controller::performListCurrentRentedMovies(){
 
 /**
 * Method to display the top ten movies in descending order
-*
-*
 */
 void Controller::performDisplayTopTenMovies(){
     createHeaderContent("Top Ten Movies");
