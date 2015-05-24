@@ -476,6 +476,7 @@ void Controller::removeCustomer() {
     string full_name = getFullNameInput();
     try {
         app.removeCustomer(full_name);
+        cout << "\ncustomer " + full_name + " has been successfully removed" << endl;
     } catch(exception e) {
         cout << "coustomer does not exist" <<endl;
     }
