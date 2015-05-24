@@ -31,11 +31,11 @@ private:
     App app;
     /// clears the cin memory
     void clearCin();
-
+    ///prints the header when program is first ran
     void printHeader();
-
+    ///pritns a title with a boarder around it
     void createHeaderContent(string title);
-
+    ///checks if username and password are correct
     void attemptAuth();
 
     int requestInput();
