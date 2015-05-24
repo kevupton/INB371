@@ -359,6 +359,16 @@ Movie::Classification Controller::getClassificationInput() {
 
 }
 
+ string Controller::getFirstNameInput() {
+    cout << "Please enter customer's first name: ";
+    return getTextInput();
+ }
+
+ string Controller::getLastNameInput() {
+    cout << "Please enter customer's last name: ";
+    return getTextInput();
+}
+
 bool Controller::performAddDVDNew() {
     cout << string(15,'\n');
     cout << "Please enter movie title: ";
@@ -396,16 +406,14 @@ bool Controller::performRemoveDVD(){
 
 bool Controller::registerNewCustomer() {
     cout << string(15,'\n');
-    cout << "Please enter customer's first name: ";
-    string firstName = getTextInput();
-    cout << "Please enter customer's last name: ";
-    string lastName = getTextInput();
     cout << "Please enter customer's phone number: ";
-    string phoneNumber = getTextInput();
+    string phone_number = getTextInput();
     cout << "Please enter customer's address: ";
     string address = getTextInput();
     try {
-        Customer &c = app.registerCustomer(firstName,lastName,phoneNumber,address);
+        Customer &c = app.registerCustomer(
+           getFirstNameInput(),
+           getLastNameInput(),phone_number,address);
         cout << "Successfully registered:\n" << c.toString() << endl;
     } catch(exception e) {
         cout << "Customer already exists." << endl;

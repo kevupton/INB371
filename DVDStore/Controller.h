@@ -55,6 +55,9 @@ private:
     ///gets the text input either trimming or not
     string getTextInput(bool);
 
+    string getFirstNameInput();
+    string getLastNameInput();
+
     ///Waits for the enter key
     void waitForEnter();
 
