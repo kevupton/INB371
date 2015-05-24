@@ -216,7 +216,7 @@
 	<string>
 	<vector>
 
-1432466610 c:\users\jack\desktop\inb371\dvdstore\movie.h
+1432469192 c:\users\jack\desktop\inb371\dvdstore\movie.h
 	<string>
 
 1432468491 c:\users\jack\desktop\inb371\dvdstore\moviecollection.h
@@ -252,12 +252,13 @@
 	<iostream>
 	"controller.h"
 
-1432468491 c:\users\jack\desktop\inb371\dvdstore\controller.h
+1432469192 c:\users\jack\desktop\inb371\dvdstore\controller.h
 	"app.h"
 
-1432468491 source:c:\users\jack\desktop\inb371\dvdstore\movie.cpp
+1432469192 source:c:\users\jack\desktop\inb371\dvdstore\movie.cpp
 	"movie.h"
 	"app.h"
+	<sstream>
 
 1432468491 source:c:\users\jack\desktop\inb371\dvdstore\moviecollection.cpp
 	"moviecollection.h"
@@ -273,7 +274,7 @@
 	"app.h"
 	<string>
 
-1432469075 source:c:\users\jack\desktop\inb371\dvdstore\controller.cpp
+1432469844 source:c:\users\jack\desktop\inb371\dvdstore\controller.cpp
 	"controller.h"
 	"auth.h"
 	"app.h"

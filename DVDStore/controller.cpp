@@ -59,7 +59,10 @@ void Controller::attemptAuth() {
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
-    app.auth.attemptLogin(username, password);
+    if (!app.auth.attemptLogin(username, password)) {
+        cout << "Invalid userid and password. Please try again.";
+        waitForEnter();
+    }
 }
 
 int Controller::requestInput() {
@@ -433,12 +436,11 @@ void Controller::performAddDVDNew() {
 
 
 void Controller::performAddDVDExisting() {
-    cout << string(15,'\n');
     createHeaderContent("Add DVD of an Existing Movie");
-    cout << "Please enter movie title: ";
-    string title = getTextInput();
+    Movie &m = getMovieInputString();
     try {
-        //app.registerMovieFromExisting()
+        app.registerMovieFromExisting(m);
+        cout << "Successfully registered:\n" << m.toString() << endl;
     } catch (exception e) {
         cout << "Movie has not been previously registered" << endl;
     }
