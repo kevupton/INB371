@@ -396,11 +396,29 @@ bool Controller::registerNewCustomer() {
     string phoneNumber = getTextInput();
     cout << "Please enter customer's address: ";
     string address = getTextInput();
-    app.registerCustomer(firstName,lastName,phoneNumber,address);
+    try {
+        Customer &c = app.registerCustomer(firstName,lastName,phoneNumber,address);
+        cout << "Successfully registered:\n" << c.toString() << endl;
+    } catch(exception e) {
+        cout << "Customer already exists." << endl;
+    }
+
+    return true;
 }
 
 bool Controller::removeCustomer() {
+    cout << string(15,'\n');
+    cout << "Please enter customer's first name: ";
+    string firstName = getTextInput();
+    cout << "Please enter customer's last name: ";
+    string lastName = getTextInput();
+    string fullName = firstName + " " + lastName;
+    try {
 
+    } catch(exception e) {
+        cout << "coustomer does not exist" <<endl;
+    }
+    return true;
 }
 
 bool Controller::findCustomerByName() {
