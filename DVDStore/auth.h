@@ -11,7 +11,7 @@ class App;
 class Customer;
 class Auth {
 public:
-    enum UserType {CUSTOMER, STAFF, NONE};
+    enum UserType {NONE, STAFF, CUSTOMER};
 
     ///The constructor containing the app instance
     Auth(App *a);

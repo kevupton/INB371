@@ -188,3 +188,100 @@
 	<iostream>
 	<limits>
 
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\app.cpp
+	"app.h"
+	<string>
+	"customer.h"
+	<iostream>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\app.h
+	"auth.h"
+	"customer.h"
+	"customercollection.h"
+	"movie.h"
+	"moviecollection.h"
+	"rentedcollection.h"
+	<vector>
+	<map>
+
+1432441894 c:\users\jack\desktop\inb371\dvdstore\auth.h
+	<string>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\customer.h
+	<string>
+	<vector>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\customercollection.h
+	<string>
+	<vector>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\movie.h
+	<string>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\moviecollection.h
+	<map>
+	<set>
+	<string>
+	<vector>
+
+1432433319 c:\users\jack\desktop\inb371\dvdstore\rentedcollection.h
+	<vector>
+	<string>
+	<map>
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\auth.cpp
+	"auth.h"
+	<algorithm>
+	<string>
+	"app.h"
+	"customer.h"
+	<cstdlib>
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\customer.cpp
+	"customer.h"
+	"app.h"
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\customercollection.cpp
+	"customercollection.h"
+	<vector>
+	<algorithm>
+	"customer.h"
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\main.cpp
+	<iostream>
+	"controller.h"
+
+1432444346 c:\users\jack\desktop\inb371\dvdstore\controller.h
+	"app.h"
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\movie.cpp
+	"movie.h"
+	"app.h"
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\moviecollection.cpp
+	"moviecollection.h"
+	"movie.h"
+	<map>
+	<algorithm>
+	"app.h"
+
+1432433319 source:c:\users\jack\desktop\inb371\dvdstore\rentedcollection.cpp
+	"rentedcollection.h"
+	"movie.h"
+	"customer.h"
+	"app.h"
+	<string>
+
+1432444346 source:c:\users\jack\desktop\inb371\dvdstore\controller.cpp
+	"controller.h"
+	"auth.h"
+	"app.h"
+	"customer.h"
+	<iostream>
+	<limits>
+	<cstdlib>
+	<algorithm>
+	<functional>
+	<cctype>
+	<locale>
+

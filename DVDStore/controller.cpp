@@ -26,9 +26,20 @@ void Controller::clearCin() {
 * The script to instantiate the interface, and interface loop
 */
 void Controller::execute() {
-    /**
-    * Print title when program is first opened.
-    */
+    printHeader();
+    int option;
+    try {
+        while (true) {
+            if (app.auth.isLoggedIn()) {
+                handleInput(requestInput());
+            } else {
+                attemptAuth();
+            }
+        }
+    } catch(exception e) {}
+}
+
+void Controller::printHeader() {
     cout << "######  #     # ######     ######  ####### #     # #######    #    #       \n"
             "#     # #     # #     #    #     # #       ##    #    #      # #   #       \n"
             "#     # #     # #     #    #     # #       # #   #    #     #   #  #       \n"
@@ -36,24 +47,31 @@ void Controller::execute() {
             "#     #  #   #  #     #    #   #   #       #   # #    #    ####### #       \n"
             "#     #   # #   #     #    #    #  #       #    ##    #    #     # #       \n"
             "######     #    ######     #     # ####### #     #    #    #     # ####### \n";
+}
+
+void Controller::attemptAuth() {
     string username;
     string password;
-    string tempBecauseJackIsBadAtProgramming;
-    cout << "\n\n\n\n"
-            "Please log in \nEnter username: ";
+    cout << "Please log in \nEnter username: ";
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
+    app.auth.attemptLogin(username, password);
+}
 
-    cout << "temp bypass of authentication, 1 for staff 2 for customer 3 for fail";
-    cin >> tempBecauseJackIsBadAtProgramming;
+int Controller::requestInput() {
+    if (app.auth.isStaff()) {
+        displayStaffMenu();
+        int nb = getNumberInput(false);
+    } else if (app.auth.isCustomer()) {
+        displayCustomerMenu();
+    }
+}
 
-    //cin >> Auth.attemptLogin(username, password);
-    ///Have to use app.auth.attemptLogin(username, password); ^^^^
-    ///Anything to do with authentication is "app.auth"
-    string staffDesc[8] = {
-        "Add DVD:",
-        "Add movie:",
+void Controller::displayStaffMenu() {
+     string staffDesc[8] = {
+        "Add DVD of a new movie:",
+        "Add DVD of an existing movie:",
         "Remove DVD:",
         "Register a new customer:",
         "Remove a customer:",
@@ -61,8 +79,15 @@ void Controller::execute() {
         "Find customers who are currently renting a particular movie:",
         "Log Off:"
     };
+        for (int i = 0; i < 7; i++) {
+            cout << staffDesc[i] + " {" << i + 1 << "}\n";
+        }
+        cout << staffDesc[7] + " {" << 0 << "}\n";
+}
 
-     string customerDesc[7] = {
+
+void Controller::displayCustomerMenu() {
+    string customerDesc[7] = {
         "Browse all movies:",
         "Display movie information:",
         "Rent a DVD:",
@@ -71,34 +96,47 @@ void Controller::execute() {
         "Display top 10:",
         "Log Off:"
     };
-
-    int option;
-    if (tempBecauseJackIsBadAtProgramming == "1") {
-        for (int i = 0; i < 8; i++) {
-            cout << staffDesc[i] + " {" << i << "}\n";
-        }
-        while (!(cin >> option) ||!(option >= 0 && option < 8)) {
-        cout << "Please enter a valid menu number: ";
-        clearCin();
-    }
-    clearCin();
-    }
-
-    if (tempBecauseJackIsBadAtProgramming == "2") {
-        for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 7; i++) {
             cout << customerDesc[i] + " {" << i << "}\n";
         }
-    }
-
-    if (tempBecauseJackIsBadAtProgramming == "3") {
-        cout << "login failed";
-    }
-    /**
-    Create some kind of while loop
-    **/
 }
 
+void Controller::handleInput(int option) {
+    StaffMenu item = (StaffMenu) option;
+    switch(item) {
+    case ADD_DVD_NEW:
+        if (!performAddDVDNew()) return;
+        break;
 
+    case ADD_DVD_EXISTING:
+        if (!performAddDVDExisting()) return;
+        break;
+
+    case REMOVE_DVD:
+        if (!performRemoveDVD()) return;
+        break;
+
+    case REGISTER_NEW_CUSTOMER:
+        if (!registerNewCustomer()) return;
+        break;
+
+    case REMOVE_CUSTOMER:
+        if (!removeCustomer()) return;
+        break;
+
+    case FIND_PHONE_NUMBER:
+        if (!findPhoneNumber()) return;
+        break;
+
+    case FIND_CUSTOMER_BY_MOVIE_RENTAL:
+        if (!findCustomerByMovieRental()) return;
+        break;
+
+    case LOG_OFF:
+        throw exception();
+        break;
+    }
+}
 /**
 * Attempts to get a number input greater than 0
 *
@@ -124,7 +162,7 @@ int  Controller::getNumberInput(bool use_q) {
         number = atoi(value.c_str()); ///Converts value to integer
         if (!(number == 0 && value.compare("0") != 0)) { ///Check that it is a valid integer
             if (!use_q && number == 0 || use_q && value.compare("q") == 0) { //if it is 0 or q then break
-                throw new exception(); //break the operation
+                throw exception(); //break the operation
             } else {
                 return number;
             }
@@ -253,6 +291,39 @@ string &Controller::rtrim(std::string &s) {
 string &Controller::trim(std::string &s) {
     return ltrim(rtrim(s));
 }
+
+
+bool Controller::performAddDVDNew() {
+
+}
+
+
+bool Controller::performAddDVDExisting() {
+
+}
+
+
+bool Controller::performRemoveDVD(){
+
+}
+
+bool Controller::registerNewCustomer() {
+
+}
+
+bool Controller::removeCustomer() {
+
+}
+
+bool Controller::findPhoneNumber() {
+
+}
+
+bool Controller::findCustomerByMovieRental() {
+
+}
+
+
 
 /***
     ,o888888o.        ,o888888o.
