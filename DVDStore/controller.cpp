@@ -388,12 +388,18 @@ bool Controller::findCustomerByMovieRental() {
 
 
 
-bool Controller::performBrowseAllMovies();
-performDisplayMovieInfo();
-performRentDVD();
-performReturnDVD();
-performListCurrentRentedMovies();
-performDisplayTopTenMovies();
+bool Controller::performBrowseAllMovies() {
+}
+bool Controller::performDisplayMovieInfo(){
+}
+bool Controller::performRentDVD(){
+}
+bool Controller::performReturnDVD(){
+}
+bool Controller::performListCurrentRentedMovies(){
+}
+bool Controller::performDisplayTopTenMovies(){
+}
 
 
 /***
