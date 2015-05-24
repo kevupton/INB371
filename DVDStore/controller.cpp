@@ -383,7 +383,7 @@ Movie::Genre Controller::getGenreInput() {
     for (int i = 0; i < Movie::GENRE_SIZE; i++) {
         cout << Movie::GENRE_VALUES[i] + " {" << i + 1 << "}\n";
     }
-    cout << "Please select an opton: ";
+    cout << "/nPlease select an opton: ";
     return (Movie::Genre) (getNumberInput() - 1);
 }
 
@@ -393,7 +393,7 @@ Movie::Classification Controller::getClassificationInput() {
     for (int i = 0; i < Movie::CLASSIFICATION_SIZE; i++) {
         cout << Movie::CLASSIFICATION_VALUES[i] + " {" << i + 1 << "}\n";
     }
-    cout << "Please select an opton: ";
+    cout << "/nPlease select an opton: ";
     return (Movie::Classification) (getNumberInput() - 1);
 }
 
@@ -420,18 +420,18 @@ string Controller::getAddressInput() {
 void Controller::performAddDVDNew() {
     cout << string(15,'\n');
     createHeaderContent("Add DVD of a New Movie");
-    cout << "Please enter movie title: ";
+    cout << "\nPlease enter movie title: ";
     string title = getTextInput();
-    cout << "Please enter movie director: ";
+    cout << "\nPlease enter movie director: ";
     string director = getTextInput();
-    cout << "Please enter movie duration: ";
+    cout << "\nPlease enter movie duration: ";
     int duration = getNumberInput();
     Movie::Genre genre = getGenreInput();
     Movie::Classification classification = getClassificationInput();
-    cout << "Please enter movie release date: ";
+    cout << "\nPlease enter movie release date: ";
     string release_date = getTextInput();
     Movie &m = app.registerMovie(title, director, duration, genre, classification, release_date);
-    cout << "Successfully registered:\n" << m.toString() << endl;
+    cout << "\nSuccessfully registered:\n" << m.toString() << endl;
 }
 
 
@@ -517,7 +517,6 @@ string Controller::getFullNameInput() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomersByMovieRental() {
-    cout << string(15,'\n');
     createHeaderContent("Find Customers By Movie Rental");
     cout << "\nPlease input the movie title (0 to cancel): ";
     string title = getTextInput();
@@ -538,13 +537,11 @@ void Controller::findCustomersByMovieRental() {
 * Browses the users movies. Displays all movies that the use is renting
 */
 void Controller::performBrowseAllMovies() {
-    cout << string(15,'\n');
     createHeaderContent("Browse All Movies");
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
 
-    createHeaderContent("Browse Your Movies");
     for (it = movies.begin(); it != movies.end(); it++) {
         cout << (*it)->toString() << endl;
     }
@@ -573,6 +570,12 @@ void Controller::performRentDVD(){
 
 void Controller::performReturnDVD(){
     createHeaderContent("Return a DVD");
+    Movie &m = getMovieInputString();
+    try {
+        m.setReturned();
+    } catch(exception e) {
+        cout << "You dont have this movie rented";
+    }
 }
 
 void Controller::performListCurrentRentedMovies(){
