@@ -61,6 +61,8 @@ private:
     string getLastNameInput();
     string getPhoneNumberInput();
     string getAddressInput();
+    string getFullNameInput();
+
 
     ///Waits for the enter key
     void waitForEnter();
