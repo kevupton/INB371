@@ -70,6 +70,8 @@ int Controller::requestInput() {
 }
 
 void Controller::displayStaffMenu() {
+      cout << string(8,'\n');
+      cout << "Staff Menu \n \n";
      string staffDesc[8] = {
         "Add DVD of a new movie:",
         "Add DVD of an existing movie:",
@@ -84,10 +86,13 @@ void Controller::displayStaffMenu() {
         cout << staffDesc[i] + " {" << i + 1 << "}\n";
     }
     cout << staffDesc[7] + " {" << 0 << "}\n";
+    cout << "Please enter an option: ";
 }
 
 
 void Controller::displayCustomerMenu() {
+      //cout << string(10,'\n');
+      cout << "please select an option \n \n";
     string customerDesc[7] = {
         "Browse all movies:",
         "Display movie information:",
@@ -101,12 +106,21 @@ void Controller::displayCustomerMenu() {
         cout << customerDesc[i] + " {" << i + 1 << "}\n";
     }
     cout << customerDesc[6] + " {" << 0 << "}\n";
+    cout << string(14,'\n');
 }
 
 void Controller::handleInput(int option) {
+    if (app.auth.isStaff()) {
+        handleStaffInput(option);
+    } else {
+        handleCustomerInput(option);
+    }
+}
+
+void Controller::handleStaffInput(int option) {
     StaffMenu item = (StaffMenu) option;
     switch(item) {
-    case LOG_OFF:
+    case S_LOG_OFF:
         app.auth.logout();
         break;
     case ADD_DVD_NEW:
@@ -134,6 +148,37 @@ void Controller::handleInput(int option) {
 
     case FIND_CUSTOMER_BY_MOVIE_RENTAL:
         if (!findCustomerByMovieRental()) return;
+        break;
+    }
+}
+
+void Controller::handleCustomerInput(int option) {
+    CustomerMenu item = (CustomerMenu) option;
+    switch(item) {
+    case C_LOG_OFF:
+        app.auth.logout();
+        break;
+    case BROWSE_ALL_MOVIES:
+        if (!performBrowseAllMovies()) return;
+        break;
+    case DISPLAY_MOVIE_INFO:
+        if (!performDisplayMovieInfo()) return;
+        break;
+
+    case RENT_DVD:
+        if (!performRentDVD()) return;
+        break;
+
+    case RETURN_DVD:
+        if (!performReturnDVD()) return;
+        break;
+
+    case LIST_CURRENT_RENTED_MOVIES:
+        if (!performListCurrentRentedMovies()) return;
+        break;
+
+    case DISPLAY_TOP_TEN_MOVIES:
+        if (!performDisplayTopTenMovies()) return;
         break;
     }
 }
@@ -323,6 +368,14 @@ bool Controller::findCustomerByMovieRental() {
 
 }
 
+
+
+bool Controller::performBrowseAllMovies();
+performDisplayMovieInfo();
+performRentDVD();
+performReturnDVD();
+performListCurrentRentedMovies();
+performDisplayTopTenMovies();
 
 
 /***

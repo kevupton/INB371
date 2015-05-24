@@ -15,7 +15,8 @@ public:
     ///Runs the while loop which runs the interface
     void execute();
 
-    enum StaffMenu{LOG_OFF, ADD_DVD_NEW, ADD_DVD_EXISTING, REMOVE_DVD, REGISTER_NEW_CUSTOMER, REMOVE_CUSTOMER, FIND_PHONE_NUMBER, FIND_CUSTOMER_BY_MOVIE_RENTAL};
+    enum StaffMenu{S_LOG_OFF, ADD_DVD_NEW, ADD_DVD_EXISTING, REMOVE_DVD, REGISTER_NEW_CUSTOMER, REMOVE_CUSTOMER, FIND_PHONE_NUMBER, FIND_CUSTOMER_BY_MOVIE_RENTAL};
+    enum CustomerMenu{C_LOG_OFF, BROWSE_ALL_MOVIES, DISPLAY_MOVIE_INFO, RENT_DVD, RETURN_DVD, LIST_CURRENT_RENTED_MOVIES, DISPLAY_TOP_TEN_MOVIES};
     /// trim from start
     static string &ltrim(string &s);
     /// trim from end
@@ -39,6 +40,8 @@ private:
     void displayCustomerMenu();
 
     void handleInput(int option);
+    void handleStaffInput(int option);
+    void handleCustomerInput(int option);
 
     ///gets an input that is a number not 0. uses 0 to cancel
     int getNumberInput();
@@ -67,6 +70,14 @@ private:
     bool removeCustomer();
     bool findPhoneNumber();
     bool findCustomerByMovieRental();
+
+
+    bool performBrowseAllMovies();
+    bool performDisplayMovieInfo();
+    bool performRentDVD();
+    bool performReturnDVD();
+    bool performListCurrentRentedMovies();
+    bool performDisplayTopTenMovies();
 
         /**
     Make all the controller methods private :)
