@@ -15,7 +15,7 @@ public:
     ///Runs the while loop which runs the interface
     void execute();
 
-    enum StaffMenu{ADD_DVD_NEW, ADD_DVD_EXISTING, REMOVE_DVD, REGISTER_NEW_CUSTOMER, REMOVE_CUSTOMER, FIND_PHONE_NUMBER, FIND_CUSTOMER_BY_MOVIE_RENTAL, LOG_OFF};
+    enum StaffMenu{LOG_OFF, ADD_DVD_NEW, ADD_DVD_EXISTING, REMOVE_DVD, REGISTER_NEW_CUSTOMER, REMOVE_CUSTOMER, FIND_PHONE_NUMBER, FIND_CUSTOMER_BY_MOVIE_RENTAL};
     /// trim from start
     static string &ltrim(string &s);
     /// trim from end

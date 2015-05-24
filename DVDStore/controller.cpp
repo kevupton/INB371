@@ -62,9 +62,10 @@ void Controller::attemptAuth() {
 int Controller::requestInput() {
     if (app.auth.isStaff()) {
         displayStaffMenu();
-        int nb = getNumberInput(false);
+        int nb = getNumberInput(true);
     } else if (app.auth.isCustomer()) {
         displayCustomerMenu();
+        int nb = getNumberInput(true);
     }
 }
 
@@ -79,10 +80,10 @@ void Controller::displayStaffMenu() {
         "Find customers who are currently renting a particular movie:",
         "Log Off:"
     };
-        for (int i = 0; i < 7; i++) {
-            cout << staffDesc[i] + " {" << i + 1 << "}\n";
-        }
-        cout << staffDesc[7] + " {" << 0 << "}\n";
+    for (int i = 0; i < 7; i++) {
+        cout << staffDesc[i] + " {" << i + 1 << "}\n";
+    }
+    cout << staffDesc[7] + " {" << 0 << "}\n";
 }
 
 
@@ -96,18 +97,21 @@ void Controller::displayCustomerMenu() {
         "Display top 10:",
         "Log Off:"
     };
-    for (int i = 0; i < 7; i++) {
-            cout << customerDesc[i] + " {" << i << "}\n";
-        }
+    for (int i = 0; i < 6; i++) {
+        cout << customerDesc[i] + " {" << i + 1 << "}\n";
+    }
+    cout << customerDesc[6] + " {" << 0 << "}\n";
 }
 
 void Controller::handleInput(int option) {
     StaffMenu item = (StaffMenu) option;
     switch(item) {
+    case LOG_OFF:
+        app.auth.logout();
+        break;
     case ADD_DVD_NEW:
         if (!performAddDVDNew()) return;
         break;
-
     case ADD_DVD_EXISTING:
         if (!performAddDVDExisting()) return;
         break;
@@ -130,10 +134,6 @@ void Controller::handleInput(int option) {
 
     case FIND_CUSTOMER_BY_MOVIE_RENTAL:
         if (!findCustomerByMovieRental()) return;
-        break;
-
-    case LOG_OFF:
-        throw exception();
         break;
     }
 }
