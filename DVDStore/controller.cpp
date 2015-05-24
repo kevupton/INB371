@@ -393,6 +393,7 @@ string Controller::getAddressInput() {
 
 void Controller::performAddDVDNew() {
     cout << string(15,'\n');
+    createHeaderContent("Add DVD of a New Movie");
     cout << "Please enter movie title: ";
     string title = getTextInput();
     cout << "Please enter movie director: ";
@@ -410,6 +411,8 @@ void Controller::performAddDVDNew() {
 
 
 void Controller::performAddDVDExisting() {
+    cout << string(15,'\n');
+    createHeaderContent("Add DVD of an Existing Movie");
     try {
         //app.registerMovieFromExisting()
     } catch (exception e) {
@@ -419,17 +422,24 @@ void Controller::performAddDVDExisting() {
 
 
 void Controller::performRemoveDVD(){
-
+    cout << string(15,'\n');
+    createHeaderContent("Remove DVD");
 }
 
+
 void Controller::registerNewCustomer() {
+    cout << string(15,'\n');
     createHeaderContent("Register New Customer");
+    string first_name = getFirstNameInput();
+    string last_name = getLastNameInput();
+    string phone_number = getPhoneNumberInput();
+    string address = getAddressInput();
     try {
         Customer &c = app.registerCustomer(
-            getFirstNameInput(),
-            getLastNameInput(),
-            getPhoneNumberInput(),
-            getAddressInput()
+            first_name,
+            last_name,
+            phone_number,
+            address
         );
         cout << "Successfully registered:\n" << c.toString() << endl;
     } catch(exception e) {
@@ -439,6 +449,7 @@ void Controller::registerNewCustomer() {
 
 void Controller::removeCustomer() {
     cout << string(15,'\n');
+    createHeaderContent("Remove Customer");
     cout << "Please enter customer's first name: ";
     string firstName = getTextInput();
     cout << "Please enter customer's last name: ";
@@ -457,6 +468,8 @@ void Controller::removeCustomer() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomerByName() {
+    cout << string(15,'\n');
+    createHeaderContent("Find Customer By Name");
     try {
         Customer &c = app.getCustomer(getFullNameInput());
         cout << endl << c.toString();
@@ -480,6 +493,8 @@ string Controller::getFullNameInput() {
 * returns bool true on success or false on cancel
 */
 void Controller::findCustomersByMovieRental() {
+    cout << string(15,'\n');
+    createHeaderContent("Find Customers By Movie Rental");
     cout << "\nPlease input the movie title (0 to cancel): ";
     string title = getTextInput();
     try { ///Try get all customers
