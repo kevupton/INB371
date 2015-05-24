@@ -378,6 +378,14 @@ bool Controller::performAddDVDNew() {
 
 
 bool Controller::performAddDVDExisting() {
+    try {
+        //app.registerMovieFromExisting()
+    } catch (exception e) {
+    cout << "Movie has not been previously registered" << endl;
+    }
+
+    return true;
+
 
 }
 
