@@ -52,7 +52,8 @@ void Controller::printHeader() {
 void Controller::attemptAuth() {
     string username;
     string password;
-    cout << "Please log in \nEnter username: ";
+    createHeaderContent("Please Log In");
+    cout << "Enter username: ";
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
@@ -71,7 +72,7 @@ int Controller::requestInput() {
 
 void Controller::displayStaffMenu() {
       cout << string(8,'\n');
-      cout << "Staff Menu \n \n";
+      createHeaderContent("Staff Menu");
      string staffDesc[8] = {
         "Add DVD of a new movie:",
         "Add DVD of an existing movie:",
@@ -91,8 +92,8 @@ void Controller::displayStaffMenu() {
 
 
 void Controller::displayCustomerMenu() {
-      //cout << string(10,'\n');
-      cout << "please select an option \n \n";
+      cout << string(8,'\n');
+      createHeaderContent("Customer Menu");
     string customerDesc[7] = {
         "Browse all movies:",
         "Display movie information:",
@@ -106,7 +107,7 @@ void Controller::displayCustomerMenu() {
         cout << customerDesc[i] + " {" << i + 1 << "}\n";
     }
     cout << customerDesc[6] + " {" << 0 << "}\n";
-    cout << string(14,'\n');
+    cout << "Please enter an option: ";
 }
 
 void Controller::handleInput(int option) {
@@ -351,6 +352,13 @@ string &Controller::trim(std::string &s) {
     return ltrim(rtrim(s));
 }
 
+void Controller::createHeaderContent(string title) {
+    cout << string(13,'\n');
+    cout << string(45, '#') << endl;
+    cout << "\t" + title + "\t\n";
+    cout << string(45, '#') << endl;
+}
+
 Movie::Genre Controller::getGenreInput() {
 
 }
@@ -366,6 +374,16 @@ Movie::Classification Controller::getClassificationInput() {
 
  string Controller::getLastNameInput() {
     cout << "Please enter customer's last name: ";
+    return getTextInput();
+}
+
+string Controller::getPhoneNumberInput() {
+    cout << "Please enter customer's phone number: ";
+    return getTextInput();
+}
+
+string Controller::getAddressInput() {
+    cout << "Please enter customer's address: ";
     return getTextInput();
 }
 
@@ -405,15 +423,14 @@ bool Controller::performRemoveDVD(){
 }
 
 bool Controller::registerNewCustomer() {
-    cout << string(15,'\n');
-    cout << "Please enter customer's phone number: ";
-    string phone_number = getTextInput();
-    cout << "Please enter customer's address: ";
-    string address = getTextInput();
+    createHeaderContent("Register New Customer");
     try {
         Customer &c = app.registerCustomer(
-           getFirstNameInput(),
-           getLastNameInput(),phone_number,address);
+            getFirstNameInput(),
+            getLastNameInput(),
+            getPhoneNumberInput(),
+            getAddressInput()
+        );
         cout << "Successfully registered:\n" << c.toString() << endl;
     } catch(exception e) {
         cout << "Customer already exists." << endl;

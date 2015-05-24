@@ -34,6 +34,8 @@ private:
 
     void printHeader();
 
+    void createHeaderContent(string title);
+
     void attemptAuth();
 
     int requestInput();
@@ -57,6 +59,8 @@ private:
 
     string getFirstNameInput();
     string getLastNameInput();
+    string getPhoneNumberInput();
+    string getAddressInput();
 
     ///Waits for the enter key
     void waitForEnter();
