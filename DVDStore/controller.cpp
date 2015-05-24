@@ -349,9 +349,29 @@ string &Controller::trim(std::string &s) {
     return ltrim(rtrim(s));
 }
 
+Movie::Genre Controller::getGenreInput() {
+
+}
+
+Movie::Classification Controller::getClassificationInput() {
+
+}
 
 bool Controller::performAddDVDNew() {
-
+    cout << string(15,'\n');
+    cout << "Please enter movie title: ";
+    string title = getTextInput();
+    cout << "Please enter movie director: ";
+    string director = getTextInput();
+    cout << "Please enter movie duration: ";
+    int duration = getNumberInput();
+    cout << "Please enter movie genre: ";
+    Movie::Genre genre = getGenreInput();
+    cout << "Please enter movie classification: ";
+    Movie::Classification classification = getClassificationInput();
+    cout << "Please enter movie release date: ";
+    string release_date = getTextInput();
+    app.registerMovie(title, director, duration, genre, classification, release_date);
 }
 
 

@@ -8,6 +8,8 @@ using namespace std;
 The class for the interface of the application.
 Directly interacts with the App class
 */
+
+class Movie;
 class Controller {
 public:
     ///Sets up everything to do with the application
@@ -64,6 +66,9 @@ private:
 
     ///Creates an input request, which returns the movie with the specified id
     Movie getMovieByID();
+
+    Movie::Genre getGenreInput();
+    Movie::Classification getClassificationInput();
 
     bool performAddDVDNew();
     bool performAddDVDExisting();
