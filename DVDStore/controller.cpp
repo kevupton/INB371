@@ -364,11 +364,23 @@ void Controller::createHeaderContent(string title) {
 }
 
 Movie::Genre Controller::getGenreInput() {
-
+    cout << "\n";
+    cout << "Please enter movie genre: ";
+    for (int i = 0; i < Movie::GENRE_SIZE; i++) {
+        cout << Movie::GENRE_VALUES[i] + " {" << i + 1 << "}\n";
+    }
+    cout << "Please select an opton: ";
+    return (Movie::Genre) (getNumberInput() - 1);
 }
 
 Movie::Classification Controller::getClassificationInput() {
-
+    cout << "\n";
+    cout << "Please enter movie classification: ";
+    for (int i = 0; i < Movie::CLASSIFICATION_SIZE; i++) {
+        cout << Movie::CLASSIFICATION_VALUES[i] + " {" << i + 1 << "}\n";
+    }
+    cout << "Please select an opton: ";
+    return (Movie::Classification) (getNumberInput() - 1);
 }
 
  string Controller::getFirstNameInput() {
@@ -400,13 +412,12 @@ void Controller::performAddDVDNew() {
     string director = getTextInput();
     cout << "Please enter movie duration: ";
     int duration = getNumberInput();
-    cout << "Please enter movie genre: ";
     Movie::Genre genre = getGenreInput();
-    cout << "Please enter movie classification: ";
     Movie::Classification classification = getClassificationInput();
     cout << "Please enter movie release date: ";
     string release_date = getTextInput();
-    app.registerMovie(title, director, duration, genre, classification, release_date);
+    Movie &m = app.registerMovie(title, director, duration, genre, classification, release_date);
+    cout << "Successfully registered:\n" << m.toString() << endl;
 }
 
 
@@ -511,6 +522,8 @@ void Controller::findCustomersByMovieRental() {
 }
 
 void Controller::performBrowseAllMovies() {
+    cout << string(15,'\n');
+    createHeaderContent("Browse All Movies");
     Customer &c = app.auth.getCustomer();
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
@@ -520,14 +533,24 @@ void Controller::performBrowseAllMovies() {
     }
 }
 void Controller::performDisplayMovieInfo(){
+    cout << string(15,'\n');
+    createHeaderContent("Display Movie Info");
 }
 void Controller::performRentDVD(){
+    cout << string(15,'\n');
+    createHeaderContent("Rent a DVD");
 }
 void Controller::performReturnDVD(){
+    cout << string(15,'\n');
+    createHeaderContent("Return a DVD");
 }
 void Controller::performListCurrentRentedMovies(){
+    cout << string(15,'\n');
+    createHeaderContent("List Current Rented Movies");
 }
 void Controller::performDisplayTopTenMovies(){
+    cout << string(15,'\n');
+    createHeaderContent("Top Ten Movies");
 }
 
 

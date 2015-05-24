@@ -215,7 +215,7 @@
 	<string>
 	<vector>
 
-1432462841 c:\users\jack\desktop\inb371\dvdstore\movie.h
+1432466610 c:\users\jack\desktop\inb371\dvdstore\movie.h
 	<string>
 
 1432433319 c:\users\jack\desktop\inb371\dvdstore\moviecollection.h
@@ -254,7 +254,7 @@
 1432464469 c:\users\jack\desktop\inb371\dvdstore\controller.h
 	"app.h"
 
-1432450999 source:c:\users\jack\desktop\inb371\dvdstore\movie.cpp
+1432466609 source:c:\users\jack\desktop\inb371\dvdstore\movie.cpp
 	"movie.h"
 	"app.h"
 
@@ -272,7 +272,7 @@
 	"app.h"
 	<string>
 
-1432464469 source:c:\users\jack\desktop\inb371\dvdstore\controller.cpp
+1432467313 source:c:\users\jack\desktop\inb371\dvdstore\controller.cpp
 	"controller.h"
 	"auth.h"
 	"app.h"
