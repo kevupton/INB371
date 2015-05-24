@@ -588,7 +588,6 @@ void Controller::performListCurrentRentedMovies(){
     vector<Movie*> movies = c.getRentedMovies();
     vector<Movie*>::iterator it;
 
-    createHeaderContent("Browse Your Movies");
     for (it = movies.begin(); it != movies.end(); it++) {
         cout << (*it)->toString() << endl;
     }
